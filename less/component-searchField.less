@@ -1,0 +1,96 @@
+/* 
+   Created on : 12.1.2015, 13:31:33
+   Author     : GEe
+   file       : component-searchField
+*/
+
+.component-searchField{
+    display: block;
+    position: relative;
+    background-color: @colorWhite;
+    border: 1px solid @grayE4;
+    border-radius: @borderRadius;
+    line-height: @lineHeight;
+    height: @lineHeight + 2px;
+
+    .component-dropdownMenu, .component-dropdownMenu-click{
+        height: @lineHeight;
+        left: 0;
+        line-height: @lineHeight;
+        position: absolute;
+        top: 0;
+        z-index: 1004;
+
+        > a{
+            line-height: @lineHeight;
+        }
+        
+        + input[type="text"]{
+            border-left: 2px solid @grayE4;
+            border-radius: 0;
+            display: block;
+            font-style: normal;
+            margin-left: 92px;
+            width: auto;
+        }
+    }
+
+    &.required{
+        border-left-color: @colorRedAlert;
+    }
+
+    &.focused{
+        border-color: @colorBlue!important;
+    }
+    
+    &.filled{
+        border-left-color: @grayE4;
+    }
+    
+    input[type="text"]{
+        border: none;
+        height: @lineHeight;
+        text-align: left!important;
+        width: 100%;
+        margin-top: 0;
+        padding-right: @lineHeight!important;
+        padding-left: 16px;
+
+        &:focus{
+            color: @gray50;
+            font-style: normal;
+        }
+
+        &.empty{
+            font-style: normal;
+        }
+
+        + div.fa{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: @grayB4;
+            text-align: center;
+            height: @lineHeight;
+            line-height: @lineHeight;
+            width: @lineHeight;
+
+            &:before{
+                position: relative;
+                top: -1px;
+            }
+
+            &.fa-search:hover{
+                cursor: default;
+            }
+
+            &.fa-times{
+                cursor: pointer;
+
+                &:hover{
+                    color: @gray80;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,455 @@
+/* 
+   Created on  :  14.3.2014, 12:04:33
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  sharedStructures
+*/
+
+.addedTooltip{
+    cursor: help;
+    text-decoration: underline;
+
+    label, label&, td&, span&, .entry-label{
+        text-decoration: underline dashed @gray80;
+        -webkit-text-decoration: underline dashed @gray80;
+    }
+
+    &:hover{
+        text-decoration: none;
+
+        label, .entry-label{
+            text-decoration: none;
+        }
+    }
+}
+
+.button-primary, .button-blue{
+    .button();
+    background-color: @colorBlue;
+    color: @colorWhite;
+
+    &:link, &:visited{
+        color: @colorWhite;
+    }
+
+    &:hover, &:focus{
+        background-color: @colorBlueFocused;
+    }
+
+    &:active{
+        background-color: @colorBluePressed;
+    }
+
+    input[type=submit]&, input[type=button]&{
+        height: @buttonHeight;
+    }
+
+}
+.button-secondary{
+    .button();
+    float: right;
+    margin-left: @gridGap * 2;
+    text-decoration: underline;
+
+    &:hover, &:focus{
+        color: @gray28;
+        background-color: @listItemHoverBackgroundColor;
+        text-decoration: none;
+    }
+
+    &:active{
+        background-color: @blackOpacity7;
+    }
+
+    &.fa:not(.fa-after){
+
+        padding-left: @lineHeight;
+
+        &::before{
+            position: absolute;
+            margin: 1px 0 0 -@gridGap;
+        }
+    }
+
+    &.fa.fa-after{
+        padding-right: @lineHeight;
+
+        &::after{
+            position: absolute;
+            margin: 1px 0 0 @gridSmallGap;
+        }
+    }
+}
+
+.button-edit{
+    .button-icon(@gridRowHeight, @gridRowHeight);
+    margin-right: @gridRowHeight;
+
+    &::before{
+        color: @gray70;
+    }
+    
+    &:hover, &:focus{
+        color: @gray28;
+        background-color: @listItemHoverBackgroundColor;
+        text-decoration: none;
+    }
+
+    &:active{
+        background-color: @blackOpacity7;
+    }
+}
+.button-icon{
+    .button-icon();
+}
+
+.bulkOperations .component-menuListWithIcons{
+    width: 180px;
+
+    li:not(:last-of-type)::after{
+        width: 140px;
+    }
+}
+
+a.blueLink{
+    color: @colorBlue;
+    text-decoration: underline;
+
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+ul.listOfCheckboxes, ul.listOfRadiobuttons, ul.listWithLineDividers{
+    .setMenuStructure();
+
+    > li.divider{
+        &::after{
+            margin: 0 -40px;
+            background-color: @grayB4;
+        }
+
+        & + li:hover > label::before{
+            border-top-color: @grayB4;
+        }
+    }
+}
+ul.listOfCheckboxes{
+    .setMenuWithoutIcons(@gridGap * 2);
+
+    > li.divider::after{
+        margin: 0 -40px 0 -20px;
+    }
+}
+ul.listOfRadiobuttons{
+    .setMenuWithoutIcons(@gridGap * 2);
+    .setRadioButtonStructure();
+}
+ul.listWithLineDividers{
+    .setMenuWithoutIcons(@gridGap);
+
+    > li.divider::after{
+        margin: 0 -40px 0 -20px;
+    }
+}
+ul.listWithIconsAndLineDividers{
+    .listWithIconsAndLineDividers();
+}
+
+ul.listOfCheckboxes{
+
+    label{
+
+        br{
+            display: none;
+        }
+
+        span.secondLine{
+            display: block;
+            color: @gray70;
+            font-size: @textSizeSmall;
+            line-height: 13px;
+            margin: -5px 0 4px 0;
+        }
+    }
+}
+
+.listWithoutIndent{
+    list-style-type: none;
+    padding-left: @gridGap;
+
+    > li + li{
+        padding-top: @lineHeightBasic;
+    }
+
+    ul{
+        .listWithIndent();
+    }
+}
+.listWithIndent{
+
+    li{
+        list-style-type: none;
+        padding-left: @gridSmallGap * 2;
+
+        &::before{
+            content: "\2013";
+            position: absolute;
+            display: inline-block;
+            margin-left: -(@gridSmallGap * 2);
+        }
+    }
+}
+
+.icon-coinCzech{
+    background: @grayB4;
+    border-radius: 100%;
+    color: @grayFA;
+    font-size: @textSizeSmall;
+    font-weight: 600;
+    line-height: @iconSizeDouble - 2px;
+    height: @iconSizeDouble - 2px;
+    width: @iconSizeDouble - 2px;
+    margin: (@iconSizeDouble - 1px) auto (@gridSmallGap - 1px);
+}
+
+table .parcel-params{
+    width: 94px;
+
+    .icon-parcelPart{
+        position: absolute;
+        left: 2px;
+        top: 14px;
+        background: url("../img/icon-parcel-part.png") left center no-repeat;
+        height: 16px;
+        width: 16px;
+    }
+
+    a{
+        text-align: right;
+        white-space: nowrap;
+        padding-left: 24px !important;
+        padding-right: 8px !important;
+    }
+}
+
+.loading-spinner {
+    display: none;
+    float:right;
+    position: absolute;
+}
+div.content-loading {
+    min-height: 4em;
+    min-width: 4em;
+    /*background: url('../css/ajax-loader.gif') center center no-repeat;
+    */
+
+    * {
+        opacity: 0.6;
+    }
+
+    >.loading-spinner {        
+        display: block;
+        opacity: 1;
+    }
+}
+
+.curtain{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20000;
+    background: @blackOpacity70;
+    width: 100%;
+    height: 100%;
+}
+
+.description{
+    color: @gray80;
+    font-size: @textSizeSmall;
+
+    .textSizeBigger &{
+        padding-left: @gridGap;
+    }
+}
+
+.itemOfInterest{
+    display: block;
+    float: left;
+    font-size: @textSizeBigger;
+    width: 50%;
+    padding: (@gridSmallGap - 2px);
+
+    & + &{
+        padding-top: (@gridSmallGap - 2px);
+    }
+
+    strong{
+        display: block;
+        font-size: @textSizeSmall;
+    }
+}
+
+.newLine{
+    display: block;
+}
+
+.sectionMessage{
+
+    clear: both;
+    color: @gray50;
+    font-style: italic;
+    line-height: 16px;
+    padding: 8px 0 0 0;
+
+    p{
+        &+ p{
+            padding-top: 16px;
+        }
+
+        span.fa{
+            display: inline-block;
+            padding: 0 8px;
+        }
+    }
+}
+
+.scrollable {
+    overflow: hidden;
+    position: relative;
+
+    &.toBeExpired, &.itemsChanged {
+        max-height: 262px;
+    }
+}
+
+.switcher{
+    .component-switchOneRow();
+}
+
+.tooltip-rentedAcreage{
+    width: 224px;
+
+    table{
+        width: 100%;
+
+        tr + tr{
+
+            td, th{
+                border-top: 1px solid @grayEC;
+            }
+        }
+
+        th, td{
+            line-height: 24px!important;
+            vertical-align: middle;
+        }
+
+        td{
+            font-weight: 600;
+            text-align: right;
+        }
+    }
+}
+
+#CleverMapsSquared {
+    position:absolute;
+    bottom:0;
+}
+
+.picker{
+    width: 240px;
+
+    .picker__wrap {
+        font-size: 13px;
+    }
+
+    .picker__day{
+        text-align: center;
+    }
+
+    .picker__nav--next, .picker__nav--prev{
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 30px;
+        text-align: center;
+        height: 30px;
+        width: 48px;
+        padding: 0;
+    }
+
+    .picker__nav--prev::before{
+        margin-right: -16px;
+        display: inline-block;
+    }
+
+    .picker__nav--next{
+        right: 0;
+        left: auto;
+
+        &::before{
+            margin-left: -16px;
+            display: inline-block;
+        }
+    }
+}
+
+select.picker__select--year,select.picker__select--month {
+    font-size: 11px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    max-width: 60px;
+    padding: 0px;
+    margin: 0px;
+    height:30px;
+}
+
+.implementation-mode {
+    color: @colorRedAlert;
+    font-size: 16px;
+}
+
+// titles
+h1{
+    font-weight: 400;
+}
+
+.svg-mapIconContainer{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+
+.svg-mapIcon{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.svg-mapIcon-set(colorAkva);
+.svg-mapIcon-set(colorBlack);
+.svg-mapIcon-set(colorBlue);
+.svg-mapIcon-set(colorBrown);
+.svg-mapIcon-set(colorGray);
+.svg-mapIcon-set(colorGreen);
+.svg-mapIcon-set(colorOrange);
+.svg-mapIcon-set(colorPink);
+.svg-mapIcon-set(colorPurple);
+.svg-mapIcon-set(colorRed);
+
+.dividerStatics{
+    background: red;
+    color: #fff;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.contract-acreageExemptFromTax-label .component-tooltip.positionedTop{
+    margin-bottom: 16px;
+}

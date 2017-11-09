@@ -1,0 +1,132 @@
+/* 
+   Created on  :  18.10.2014, 10:14:22
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-modalDialog
+*/
+
+@dialogWidth: 640px;
+@maxContentHeight: 486px;
+
+.component-modalDialog{
+    .setAppBackground();
+    .boxSizing();
+    .boxDropShadow();
+    .transform(translate(-50%, 0) );
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    z-index: 20001;
+    border-radius: @borderRadius + 1px;
+    min-width: @maxContentHeight / 2;
+    max-width: @dialogWidth;
+    padding: (@gridRowHeight * 2) @lineHeight @gridGap;
+
+    &.width800 {
+        width: 900px;
+        max-width: none;
+    }
+
+    &.fullScreen{
+        width: 98%;
+        max-width: 98%;
+        left: 1%;
+        bottom: 70px;
+        max-height: none;
+        .transform(none);
+
+        &.view-addParcels{
+            position: fixed;
+        }
+
+        .contentContainer{
+            max-height: 100%;
+
+            > div.scrollable{
+                max-height: 100%;
+            }
+        }
+    }
+
+    > header{
+        .boxSizing(content-box);
+        background: #186A18;
+        border-radius: @borderRadius  @borderRadius 0 0;
+        color: @grayF6;
+        font-size: @textSizeGroupTitle;
+        width: 100%;
+        line-height: 1.4;
+        padding: 13px @lineHeight;
+        margin: -(@gridRowHeight * 2) -@lineHeight @lineHeight;
+        z-index: 200000;
+    }
+
+    .contentContainer{
+        max-height: @maxContentHeight - (@gridRowHeight * 4);
+        padding-bottom: 16px;
+
+        .message{
+            font-size: @textSizeBigger;
+
+            & + .scrollable{
+                margin-top: 28px;
+            }
+        }
+
+        &.hideOverflow{
+            overflow: hidden;
+        }
+
+        &.scrollOverflow{
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        > div.scrollable{
+            max-height: @maxContentHeight - (@gridRowHeight * 5);
+        }
+
+        p + p{
+            padding-top: @lineHeightBasic;
+        }
+    }
+
+    .component-tabulatedList{
+        margin-top: 8px;
+
+        tbody tr:first-child td{
+            border-color: @grayB4;
+        }
+
+        th{
+            color: @gray80;
+            padding-top: 0;
+        }
+
+        td{
+            padding: 8px 4px;
+        }
+    }
+
+    > footer{
+        .boxSizing(content-box);
+        position: relative;
+        background-color: @grayFA;
+        border-radius: 0 0 @borderRadius  @borderRadius;
+        border-top: 1px solid @grayE4;
+        text-align: center;
+        height: @gridRowHeight;
+        width: 100%;
+        padding: 8px @lineHeight 0;
+        margin: (@lineHeight / 2) -@lineHeight -@gridGap;
+
+        .button-secondary{
+            float: none;
+            color: @gray80;
+            margin-left: 28px;
+
+            &:hover{
+                color: @gray50;
+            }
+        }
+    }
+}

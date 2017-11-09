@@ -1,0 +1,212 @@
+/* 
+   Created on  :  Jun 13, 2014, 7:31:39 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-dropdownMenu-click
+*/
+
+.component-dropdownMenu-click{
+    display: inline-block;
+    position: relative;
+    line-height: @lineHeight;
+    height: @lineHeight;
+    z-index: 1002;
+
+    &.opened{
+        z-index: 2000;
+
+        > a, > label{
+            .boxDropShadow(0 6px 5px 0);
+            color: @gray28;
+            background-color: @colorWhite;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            display: block;
+        }
+    }
+    
+    &.formElement{
+
+        > ul, > .component-dropdownMenu-popupContent{
+
+            .component-dropdownMenu-popupContent{
+                padding-right: 12px;
+            }
+        }
+    }
+
+    > a, > label{
+        cursor: pointer;
+        position: relative;
+        color: @gray50;
+        font-family: @textFont;
+        font-weight: 600;
+        line-height: @lineHeight;
+        padding: 0 12px 0 16px!important;
+
+        &::after{
+            color: @grayB4;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            font-weight: 400;
+            padding-left: @gridSmallGap;
+        }
+    }
+
+    > span{
+        position: absolute;
+        top: -11px;
+        right: 6px;
+        background-color: @colorGreen;
+        border-radius: @borderRadius;
+        color: @colorWhite;
+        font-size: @textSizeSmall;
+        font-weight: 600;
+        line-height: @textSizeBigger;
+        padding: 2px 7px;
+    }
+
+    > ul, > .component-dropdownMenu-popupContent{
+        .boxDropShadow(0 6px 5px 0);
+        display: none;
+        position: absolute;
+        background-color: @colorWhite;
+        padding: @gridSmallGap @gridGap (@gridSmallGap * 1.5) 0;
+        
+        li{
+            
+            &.twoLines{
+
+                input[type="checkbox"] + label:not(.showAsCheckbox){
+                    box-sizing: content-box;
+                    color: @gray50;
+                    line-height: @lineHeightBasic;
+
+                    &:hover{
+                        color: @gray28;
+                    }
+
+                    &::after{
+                        margin-top: -7px;
+                    }
+
+                    @media screen and (-webkit-min-device-pixel-ratio:0) {
+                        &::after{
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+            
+            &:hover{
+                color: @gray28;
+                
+                > input[type="checkbox"] + label:not(.showAsCheckbox)::after{
+                    color: @gray28;
+                }
+            }
+            
+            label{
+                position: static;
+            }
+        }
+
+        label &.default{
+            font-weight: 700;
+        }
+    }
+
+    > .component-dropdownMenu-popupContent{
+
+        .filter-searchResultsContainer();
+
+        input[type="date"]{
+            width: 74px;
+            padding: 4px 28px 4px 8px;
+
+            + div.fa.fa-calendar-o{
+                position: absolute;
+                top: 22px;
+                right: 29px;
+                font-size: @textSizeBasic + 1;
+            }
+        }
+    }
+    
+    &.popupBottomLeft, &.popupBottomRight{
+        
+        > a, > label{
+            border-radius: @borderRadius @borderRadius 0 0;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            top: @lineHeight;
+        }
+    }
+    
+    &.popupBottomLeft{
+        
+        > ul, > .component-dropdownMenu-popupContent{
+            left: 0;
+            border-radius: 0 @borderRadius @borderRadius @borderRadius;
+        }
+    }
+
+    &.popupBottomRight{
+        
+        > ul, > .component-dropdownMenu-popupContent{
+            right: 0;
+            border-radius: @borderRadius 0 @borderRadius @borderRadius;
+        }
+    }
+    
+    &.popupTopRight, &.popupTopLeft{
+        
+        > a, > label{
+            border-radius: 0 0 @borderRadius @borderRadius;
+            z-index: 2000;
+        }
+        
+        > ul, > .component-dropdownMenu-popupContent{
+            bottom: @lineHeight;
+            padding-top: 16px;
+        }
+    }
+
+    &.popupTopRight{
+        
+        > ul, > .component-dropdownMenu-popupContent{
+            right: 0;
+            border-radius: @borderRadius @borderRadius 0 @borderRadius;
+        }
+    }
+
+    &.popupTopLeft{
+        
+        > ul, > .component-dropdownMenu-popupContent{
+            left: 0;
+            border-radius: @borderRadius @borderRadius @borderRadius 0;
+        }
+    }
+
+    .filter-searchResultsHeader{
+        min-width: 280px;
+        margin: -@gridSmallGap -@gridGap 4px 0;
+    }
+
+    > input[type="text"]{
+        border: 0;
+        width: 120px;
+    }
+
+    input[type="checkbox"] + label::after{
+        position: absolute;
+        right: @gridSmallGap;
+        top: 4px;
+    }
+
+    li, label{
+        .disableTextSelection();
+        cursor: pointer;
+    }
+}

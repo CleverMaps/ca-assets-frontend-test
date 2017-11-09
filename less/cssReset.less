@@ -1,0 +1,72 @@
+/* 
+   Created on  :  12.3.2014, 12:48:46
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  cssReset
+*/
+
+*, *::before, *::after{
+    .boxSizing();
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    text-align: left;
+    outline: 0;
+    vertical-align: baseline;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    color: @gray50;
+    font-family: @textFont;
+    font-size: @textSizeBasic;
+    font-weight: 400;
+    line-height: 1.25em;
+}
+
+strong{
+    font-weight: 600;
+}
+
+br{
+    line-height: 16px;
+}
+
+ol, ul{
+    list-style: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th{
+        font-weight: 400;
+    }
+}
+
+label{
+    display: block;
+    line-height: 1.5em;
+}
+
+a, a:link, a:visited{
+    color: @gray50;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover{
+        text-decoration: none;
+    }
+}

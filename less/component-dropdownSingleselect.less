@@ -1,0 +1,306 @@
+/* 
+   Created on  :  Jul 24, 2014, 11:24:36 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-dropdownSingleselect
+*/
+
+.component-dropdownSingleselect{
+    position: relative;
+
+    &.popupTop{
+
+        > ul, .component-dropdownSingleselect-content{
+            bottom: 32px;
+            padding: 12px @gridGap 0 0;
+            .boxDropShadow(0 -3px 5px 0);
+        }
+    }
+
+    &.popupBottomRight{
+
+        > ul, .component-dropdownSingleselect-content{
+            left: auto;
+            right: 0;
+        }
+    }
+
+    &.opened{
+
+        > span{
+            background-color: @grayFA;
+
+            &::before{
+                color: @gray70!important;
+            }
+        }
+
+        > ul, .component-dropdownSingleselect-content{
+            display: block;
+        }
+    }
+
+    &.formElement{
+        @backgroundColor: @colorWhite;
+
+        display: block;
+        float: left;
+        font-size: 13px;
+        background-color: @colorWhite;
+        border: 1px solid @grayE4;
+        border-left-width: 3px;
+        border-radius: @borderRadius;
+        height: @lineHeight;
+        width: 100%;
+        margin-right: 0;
+
+        &.opened{
+            border-color: @backgroundColor;
+            border-radius: @borderRadius @borderRadius 0 0;
+
+            > span{
+                .boxDropShadow(0 6px 5px 0);
+                background-color: @backgroundColor;
+                color: @gray28;
+            }
+        }
+
+        > span{
+            padding-right: 28px;
+            overflow: hidden;
+
+            &::before{
+                right: 10px;
+                color: @grayB4;
+                font-size: @iconSizeBasic;
+
+                transform: none;
+                -ms-transform: none;
+                -webkit-transform: none;
+            }
+
+            > span{
+                font-weight: 600;
+            }
+        }
+
+        > ul, .component-dropdownSingleselect-content{
+            top: @lineHeight - 2px;
+            background: @backgroundColor none;
+            width: 296px;
+            padding: 0 16px 12px 0;
+
+            label{
+                cursor: pointer;
+                float: none!important;
+                position: static;
+            }
+
+            li{
+                line-height: @lineHeight + 2px!important;
+            }
+            
+            > li:not(.withoutHover):hover{
+                background-color: @grayFA;
+            }
+        }
+
+        .advanced-checkbox{
+            clear: both;
+            line-height: @lineHeight + 2px;
+            height: @lineHeight + 2px;
+            padding: 1px 0;
+
+            &.switchColumns{
+
+                .advanced-checkbox-label{
+                    float: right;
+                }
+
+                .advanced-checkbox-value{
+                    float: left;
+                }
+            }
+
+            .advanced-checkbox-label{
+                float: left;
+                line-height: @lineHeight;
+                padding-right: 8px;
+            }
+
+            .advanced-checkbox-value{
+                float: right;
+
+                input{
+                    float: left;
+
+                    &.dateType{
+                        width: 114px!important;
+                    }
+                }
+
+                select{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    &.extendedHeader{
+        height: auto;
+        z-index: 1000;
+        
+        &.formElement{
+
+            > span, > label{
+                cursor: pointer;
+                padding-left: (@gridSmallGap + 4);
+            }
+        }
+
+        > span, > label{
+            cursor: inherit;
+            display: block;
+            font-size: @textSizeGroupTitle;
+            font-weight: 400;
+            line-height: @textSizeLocalTitle;
+            padding: 6px (@gridGap * 2 + 4) 6px 0;
+
+            span{
+                display: block;
+                color: @gray70;
+                font-size: @textSizeSmall;
+                font-weight: 400;
+                line-height: @textSizeBasic;
+                padding-left: 0;
+            }
+
+            &::before{
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                margin-top: -8px;
+            }
+        }
+
+        > ul{
+            top: 100%;
+            width: 200px;
+        }
+    }
+    
+    .component-dropdownSingleselect ul, .component-dropdownSingleselect-content{
+        .boxDropShadow(0 11px 16px 0, rgba(0, 0, 0, 0.3) );
+    }
+
+    > span{
+        cursor: pointer;
+        display: block;
+        font-family: @textFont;
+        line-height: @lineHeight;
+        white-space: nowrap;
+
+        > span{
+            display: block;
+            overflow: hidden;
+            padding-left: 8px;
+        }
+
+        &::before{
+            position: absolute;
+            right: 8px;
+            top: 2px;
+            color: @colorBlue;
+            font-family: @iconFont;
+            font-size: @iconSizeTitle;
+
+            transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+    }
+
+    > ul, .component-dropdownSingleselect-content{
+        .boxDropShadow(0 6px 5px 0);
+        background-color: @grayFA;
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        padding: 0 @gridGap 12px 0;
+        width: 272px;
+        z-index: 1000;
+    }
+
+    > ul, .component-dropdownSingleselect-content ul{
+
+        > li{
+            cursor: pointer;
+            display: block;
+            line-height: @lineHeight + 2px;
+            padding: 0 0 0 @gridRowHeight;
+            margin-bottom: 1px;
+
+            a{
+                display: block;
+                text-decoration: none;
+            }
+
+            &::before{
+                content: " ";
+                display: block;
+                position: absolute;
+                background-color: @colorWhite;
+                border: 1px solid @colorBlue;
+                border-radius: 7px;
+                font-size: @iconSizeBasic;
+                height: 12px;
+                width: 12px;
+                margin: 11px 0 0 -28px;
+            }
+
+            &::after{
+                content: " ";
+                display: block;
+                overflow: hidden;
+                background-color: @grayEC;
+                font-size: @iconSizeBasic;
+                height: 1px;
+                position: relative;
+                top: 1px;
+                margin-top: -1px;
+            }
+
+            &:not(.withoutHover):hover{
+                background-color: @listItemHoverBackgroundColor;
+                color: @gray28;
+            }
+
+            &.withoutHover .component-advancedCheckbox:hover{
+                background-color: @grayFA;
+                color: @gray28;
+
+                &::before{
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    background-color: @grayFA;
+                    width: 40px;
+                    height: 34px;
+                    left: 0;
+                    margin-top: -2px;
+                    z-index: -100;
+                }
+            }
+
+            &.selected::before{
+                background-color: @colorBlue;
+                box-shadow: inset 0 0 0 2px @colorWhite;
+                -moz-box-shadow: inset 0 0 0 2px @colorWhite;
+                -webkit-box-shadow: inset 0 0 0 2px @colorWhite;
+            }
+
+            &:last-of-type::after{
+                display: none;
+            }
+        }
+    }
+}

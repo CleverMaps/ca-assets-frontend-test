@@ -1,0 +1,323 @@
+/* 
+   Created on  :  17.6.2015, 12:10:13
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-gridBlock
+*/
+
+.component-gridBlock{
+    float: left;
+    .calculateGridBlockTopDistance(1);
+
+    &.setWidth-2{
+        .calculateGridColumnSize(4);
+        
+        .component-gridButton{
+
+            &:nth-of-type(2n + 1){
+                margin-left: 0;
+            }
+
+            &:nth-of-type(n+3){
+                margin-top: @gridGap;
+            }
+        }
+    }
+
+    &.setWidth-3{
+        .calculateGridColumnSize(6);
+
+        .component-gridButton{
+
+            &:nth-of-type(3n + 1){
+                margin-left: 0;
+            }
+
+            &:nth-of-type(n+4){
+                margin-top: @gridGap;
+            }
+        }
+    }
+
+    &.addTopDistance{
+        .calculateGridBlockTopDistance(2);
+    }
+
+    + .component-gridBlock{
+        .calculateGridBlockLeftDistance(2);
+    }
+
+    h1, legend{
+        color: @gray28;
+        font-size: @textSizeGroupTitle;
+        line-height: @lineHeight;
+    }
+
+    .floatClearer{
+        height: @gridGap;
+    }
+
+    .component-tabulatedList tbody tr td.columnButton a{
+        left: 0;
+        position: relative;
+        top: 0;
+        vertical-align: middle;
+    }
+}
+
+.component-gridButton{
+    .calculateGridBlockDimensions(1);
+    cursor: pointer;
+    display: block;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+
+    &.iconButton{
+
+        &:not(:hover){
+
+            .icon-coinCzech{
+                background-color: @gray50;
+            }
+
+            .fa::before{
+                color: @gray50;
+            }
+        }
+
+        .component-gridButton-content{
+            padding-top: 24px;
+        }
+    }
+
+    &.textButtonWithIcon, &.textButton{
+
+        .bigNumber{
+            color: @gray28;
+            font-size: @textSizeLocalTitle;
+            padding-top: @gridGap;
+
+            + .description{
+                padding-top: @lineHeight - 6px;
+            }
+        }
+
+        .component-gridButton-content .description{
+            padding-top: 2px;
+        }
+    }
+
+    &.textButton{
+
+        .bigNumber{
+            padding-top: @gridGap * 2;
+
+            + .description{
+                padding-top: @lineHeight - 6px;
+            }
+        }
+    }
+
+    + .component-gridButton{
+        margin-left: @gridGap;
+    }
+
+    * {
+        text-align: center;
+    }
+
+    .component-gridButton-content{
+        .calculateGridBlockDimensions(1);
+        display: block;
+        background-color: @listItemHoverBackgroundColor;
+        border-radius: @borderRadius;
+        text-decoration: none;
+        padding: (@gridSmallGap * 2) @gridSmallGap;
+
+        &:hover{
+
+            & > .fa > .fa::before{
+                background-color: inherit;
+            }
+
+            .icon-coinCzech{
+                background-color: @colorWhiteOpacity80;
+            }
+        }
+
+        > .fa{
+            display: block;
+            line-height: @lineHeight;
+            padding-top: @gridGap + 4px;
+
+            &.fa-gift{
+                line-height: 26px;
+                padding-top: 26px;         
+
+                &::before{
+                    font-size: 38px;
+                }
+            }
+
+            &::before{
+                color: @grayB4;
+                font-size: @iconSizeDouble;
+            }
+
+            > .fa{
+                display: inline-block;
+                position: relative;
+                top: 5px;
+                border-radius: 100%;
+                line-height: 18px;
+                height: 18px;
+                width: 18px;
+                margin-left: -16px;
+
+                &::before{
+                    display: block;
+                    background: @listItemHoverBackgroundColor;
+                    border-radius: 100%;
+                    color: @grayB4;
+                    text-align: center;
+                    line-height: 18px;
+                    height: 18px;
+                    width: 18px;
+                }
+            }
+        }
+
+        .description{
+            line-height: @textSizeBasic;
+            padding-top: @lineHeightBasic;
+
+            &.newLine{
+                padding-top: 0;
+            }
+        }
+
+        &:not(:hover) > .fa > .fa{
+            .setAppBackground();
+        }
+
+        &.useBlue, &.useBrown, &.useGold, &.useGray, &.useGreen, &.usePurple, &.useRed, &.useViolet{
+
+            &:hover, &:focus, &:active, &:hover *, &:focus *, &:active *{
+                color: @colorWhite;
+
+                .fa::before, .description{
+                    color: @colorWhiteOpacity80;
+                }
+            }
+        }
+
+        &:hover .icon-coinCzech{
+            background-color: @colorWhiteOpacity80;
+            color: @colorBlueFocused;
+        }
+
+        &.useBlue{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorBlueFocused;
+
+                .icon-coinCzech{
+                    color: @colorBlueFocused;
+                }
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorBluePressed;
+
+                .icon-coinCzech{
+                    color: @colorBluePressed;
+                }
+            }
+        }
+
+        &.useBrown{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorBrownFocused;
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorBrownPressed;
+            }
+        }
+
+        &.useGold{
+
+            &:hover, &:focus{
+                background-color: @colorGoldFocused;
+            }
+
+            &:active{
+                background-color: @colorGoldPressed;
+            }
+        }
+
+        &.useGray{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorGrayFocused;
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorGrayPressed;
+            }
+        }
+
+        &.useGreen{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorGreenFocused;
+                
+                .icon-coinCzech{
+                    color: @colorGreenFocused;
+                }
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorGreenPressed;
+                
+                .icon-coinCzech{
+                    color: @colorGreenPressed;
+                }
+            }
+        }
+
+        &.usePurple{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorPurpleFocused;
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorPurplePressed;
+            }
+        }
+
+        &.useRed{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorRedFocused;
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorRedPressed;
+            }
+        }
+
+        &.useViolet{
+
+            &:hover, &:focus, &:hover .fa, &:focus .fa{
+                background-color: @colorVioletFocused;
+            }
+
+            &:active, &:active .fa{
+                background-color: @colorVioletPressed;
+            }
+        }
+    }
+}

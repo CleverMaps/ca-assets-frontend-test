@@ -1,0 +1,450 @@
+/* 
+   Created on  :  Jun 26, 2014, 10:23:31 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  basicDefinitions
+*/
+
+body{
+    .setAppBackground();
+    min-width: 1080px;
+
+    &.mapa{
+        background: #FEFEFE url('../img/mapa-na-pozadi.jpg') left top no-repeat;
+    }
+}
+
+.clear {
+    clear:both;
+}
+
+select, textarea, input[type='text'], input[type="number"], input[type="password"],  input[type="date"]{
+    border: 1px solid @grayE4;
+    border-left-width: 3px; 
+    border-radius: @borderRadius;
+    margin: 0;
+    padding: 4px;
+    font-size: 13px;
+}
+
+input, select, textarea{
+
+    &:required, &:invalid{
+        border-left-color: @colorRedAlert!important;
+        box-shadow: none;
+        -moz-box-shadow: none;
+    }
+
+    &:focus{
+        border-color: @colorBlue!important;
+    }
+
+    // &:not(:empty) - pokud bude validace vstupu, pak empty neni potreba resit. Podnet od Sebastiana.
+    &:valid:not(:focus){
+        border-color: @grayE4!important;
+    }
+}
+
+select, input{
+    height: @lineHeight;
+    line-height: @lineHeight - 8px;
+    padding: 0 4px;
+}
+
+select{
+    cursor: pointer;
+
+    option[value=""]{
+        color: @gray80;
+        font-style: italic;
+    }
+
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+}
+
+textarea{
+    width: 300px;
+    overflow: auto;
+}
+
+input{
+
+    &[type="text"], &[type="number"], &[type="password"],  &[type="date"]{
+        width: 300px;
+
+        &.empty{
+            color: @gray70;
+            font-style: italic;
+        }
+
+        &::-ms-clear{
+            display: none;
+        }
+    }
+
+    &[name="searchFor"] + div.searchFor::after{
+        content: "\f002";
+        position: absolute;
+        top: 8px;
+        right: 29px;      
+        color: @gray70;
+        font-family: @iconFont;
+        font-size: @iconSizeBasic;
+    }
+
+    &[type="radio"], &[type="checkbox"]{
+        display: none;
+    }
+
+    &[type="submit"]{
+        .button-blue();
+        padding: 0 16px;
+        font-size: 13px;
+    }
+
+    &[type="checkbox"]{
+
+        /** show check or plus **/
+        + label:not(.showAsCheckbox){
+            display: block;
+            position: static;
+            color: @gray50;
+            font-size: @textSizeBasic;
+            line-height: 24px;
+            min-width: 120px;
+            padding: 4px @gridSmallGap 4px 0;
+            cursor: pointer;
+
+            &:hover{
+                color: @gray28;
+
+                &::after{
+                    color: @gray28;
+                }
+            }
+
+            &::after{
+                display: inline-block;
+                font-family: @iconFont;
+                font-size: @iconSizeBasic;
+                font-weight: 400!important;
+                text-align: center;
+                width: @gridGap;
+            }
+        }
+
+        &:not(:checked) + label:not(.showAsCheckbox)::after{
+            content: "\f067";
+            color: @grayB4;
+        }
+
+        &:checked + label:not(.showAsCheckbox)::after{
+            content: "\f00c";
+            color: @colorGreen!important;
+        } 
+
+
+        /** show as checkbox **/
+        + label.showAsCheckbox{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            background-color: @colorWhite;
+            border: 1px solid @grayB4;
+            border-radius: 2px;
+            height: 16px;
+            width: 16px;
+        }
+
+        &:checked + label.showAsCheckbox::after{
+            content: "\f00c";
+            position: absolute;
+            top: 0;
+            left: -1px;
+            display: block;
+            color: @colorGreen;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            font-weight: 400!important;
+            text-align: center;
+            line-height: 15px;
+            height: 16px;
+            width: 16px;
+        }
+    }
+
+    &:disabled{
+        background-color: transparent;
+        border-color: transparent;
+        color: @gray50;
+        font-weight: 600;
+    }
+
+    + label{
+        display: inline-block;
+    }
+
+    &.dateType{
+        cursor: pointer;
+        text-align: left!important;
+        width: 112px;
+        padding-right: 26px!important;
+
+        &:hover + div.fa-calendar{
+            color: @gray50;
+        }
+
+        &:active + div.fa-calendar{
+            color: @gray28;
+        }
+    }
+
+    + div.fa-calendar{
+        color: @gray80;
+        cursor: pointer;
+        line-height: @lineHeightBasic;
+        margin: 8px 0 0 -22px;
+        pointer-events: none;
+        position: absolute;
+    }
+
+    + .itemUnit{
+        position: absolute;
+        margin: 9px 0 0 -30px;
+    }
+}
+
+input + select{
+    float: left;
+    border-left: 0!important;
+    border-radius: 0 2px 2px 0;
+    font-size: 11px;
+    width: 64px!important;
+    margin-top: 0;
+    padding: 1px 0!important;
+}
+
+option {
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    & + option {
+        border-top: 1px dashed @grayE4;
+    }
+
+    &[value=""]{
+        color: @gray80;
+        font-style: italic;
+    }
+}
+
+optgroup {
+    display: block;
+    padding: 12px 12px 24px;
+    cursor: pointer;
+    border-bottom: 1px dashed @grayE4;
+    font-style: normal !important;
+
+    option:first-of-type{
+        padding-top: 18px;
+    }
+}
+
+sup{
+    position: relative;
+    top: -4px;
+    font-size: (@textSizeSmall - 1px)!important;
+}
+
+.hidden{
+    display: none!important;
+}
+.positionRelative{
+    position: relative;
+}
+
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
+}
+.floatClearer{
+    clear: both;
+}
+
+.textSizeSmall{
+    font-size: @textSizeSmall!important;
+}
+.textSizeBasic{
+    font-size: @textSizeBasic!important;
+}
+.textSizeBigger{
+    font-size: @textSizeBigger!important;
+}
+.textSizeLocalTitle{
+    font-size: @textSizeLocalTitle!important;
+}
+.textSizeSectionTitle{
+    font-size: @textSizeSectionTitle!important;
+}
+
+.fontWeightNormal{
+    font-weight: normal;
+}
+.fontWeightBold{
+    font-weight: bold;
+}
+.fontWeight600{
+    font-weight: 600;
+}
+
+.colorBlue{
+    color: @colorBlue!important;
+}
+.colorGreen{
+    color: @colorGreen!important;
+}
+.colorRed{
+    color: @colorRedAlert!important;
+}
+.colorRedAlert{
+    color: @colorRedAlert!important;
+}
+.colorViolet{
+    color: @colorViolet!important;
+}
+.colorGold{
+    color: #82630F!important;
+}
+.colorGray28{
+    color: @gray28;
+}
+.colorWhite{
+    color: @colorWhite !important;
+}
+
+.textDescription{
+    color: @gray70;
+    .textSizeSmall();
+}
+.textAlignCenter{
+    text-align: center;
+}
+.textAlignRight, .textAlignRight *{
+    text-align: right!important;
+}
+.textValueOutdated{
+    cursor: help;
+    text-decoration: line-through!important;
+}
+.textRemoved{
+    text-decoration: line-through!important;
+}
+
+.alignBoxToCenter{
+    margin: 0 auto;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8{
+    float: left;
+    height: @gridBasicDimension + 4px;
+
+    &.heightAuto{
+        height: auto;
+    }
+
+    & + &{
+        margin-left: @gridGap;
+    }
+}
+.col-1{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > select{
+        .calculateGridColumnSize(1);
+    }
+}
+.col-2{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > select{
+        .calculateGridColumnSize(2);
+    }
+}
+.col-3{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > select{
+        .calculateGridColumnSize(3);
+    }
+}
+.col-4{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > textarea, & > select{
+        .calculateGridColumnSize(4);
+    }
+}
+.col-5{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > textarea, & > select{
+        .calculateGridColumnSize(5);
+    }
+}
+.col-6{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > select, & > textarea{
+        .calculateGridColumnSize(6);
+    }
+}
+.col-7{
+    .calculateGridColumnSize(7);
+}
+.col-8{
+    &, & > input[type='text'], & > input[type='datetime'], & > input[type='email'], & > input[type='tel'], & > input[type='number'], & > select, & > textarea{
+        .calculateGridColumnSize(8);
+    }
+}
+
+.add-colGap{
+    .calculateGridBlockLeftDistance(1);
+}
+
+.add-HalfLine{
+    padding-bottom: @lineHeightBasic;
+}
+.add-Line{
+    padding-bottom: @lineHeight;
+}
+
+.column4{
+    width: 100% / 12 * 4.5;
+    min-width: 340px;
+}
+.column5{
+    width: 100% / 12 * 5.5;
+}
+.column6{
+    //width: 100% / 12 * 6;
+    .calculateGridColumnSize(6);
+
+    + .column6.adaptable{
+        width: auto;
+        .calculateGridColumnSize(6.25, padding-left);
+    }
+}
+.column7{
+    width: 100% / 12 * 6.5;
+}
+.column8{
+    width: 100% / 12 * 7.4;
+}
+
+a.fa{
+    text-decoration: none;
+}
+
+.fa{
+    font-family: @textFont;
+    font-size: @textSizeBasic;
+
+    &::before, &::after{
+        font-family: @iconFont;
+        font-size: @iconSizeBasic;
+        text-align: center;
+    }
+}

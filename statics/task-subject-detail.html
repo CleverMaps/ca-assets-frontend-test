@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin,latin-ext" media="screen, projection" />
+      <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.css">
+      <link rel="stylesheet/less" type="text/css" href="../less/all-in-one.less">
+      <script src="../bower_lib/less/less.js" type="text/javascript"></script>
+   </head>
+   <body>
+      
+        <section id="component-itemDetail" class="subjectDetail component-taskView">
+            <header>
+                <div class="component-itemDetail-headerContent">
+                    <h1>
+                        Anderlíková Alžběta
+                    </h1>                
+                    <div class="component-localMenu">
+                        <input type="submit" name="saveData" value="uložit" class="button-primary" title="uložit změny" />
+                        <a href="#" class="button-secondary" title="nic neukládat">nic neukládat</a>
+                    </div>
+                </div>
+            </header>
+         
+            <form action="./#" method="post" class="component-itemDetail-content">
+            
+            <fieldset class="floatRight column5 subject-registerData component-tooltipContainer">
+               <legend>Údaje katastru</legend>
+               <ul>
+                  <li><span class="colorGray28 entry-valueOutdated">Anderlíková Alžběta</span><span class="hidden">,</span> <span class="textSizeSmall">(r.č. 558877/5544)</span></li>
+                  <li class="entry-valueOutdated">Komenského náměství 684/1a</li>
+                  <li>198 91 Praha - Barandov</li>
+                  <li>Česká republika</li>
+               </ul>
+               
+               <div class="subject-newData">
+                  <input type="submit" name="confirmUpdate" value="aktualizovat" class="button-primary" title="aktualizovat osobu" />
+                  <a href="#" class="button-secondary" title="ignorovat změny osoby">ignorovat změny</a>
+               </div>
+
+                <aside class="component-tooltip positionedBottomLeft pointerHeaderRight">
+                   <h1>Nové údaje katastru</h1>
+                   <div class="component-tooltip-content">
+                       <ul>
+                          <li>Holásková Alžběta</li>
+                          <li>Komenského náměství 214/55b</li>
+                       </ul>
+                   </div>
+                </aside>
+            </fieldset>
+            
+            <fieldset class="floatRight column5 colorRed hidden">
+               <legend class="colorRed">Založení pachtýře</legend>
+               <p>
+                  Tato osoba bude založena pouze jako pachtýř. Žádné informace o této osobě nebudou promítnuty do katastru.
+               </p>
+            </fieldset>
+         
+            <fieldset class="floatLeft column6">
+               <legend class="contentHeader">
+                  Kontaktní údaje
+                  <div class="fa fa-info-circle component-tooltipContainer">
+                    <aside class="component-tooltip positionedRight pointerHeaderLeft">
+                        <h1>Údaje do smluv</h1>
+                        <div class="component-tooltip-content">
+                           <p>
+                              Kontaktní údaje umožňují použít ve smlouvách jiné údaje o propachtovateli, než které jsou
+                              uvedeny v katastru. To je užitečně zejména v případech, kdy katastr obsahuje zastaralé údaje.
+                           </p>
+                        </div>
+                    </aside>
+                  </div>
+               </legend>
+               <a href="#" class="button-secondary clearForm" title="Kliknutím vymažete kontaktní údaje.">vyčistit formulář</a>
+               
+               <div class="col-4">
+                  <label for="subject-name" class="entry-label">jméno</label>
+                  <input type="text" name="subject-name" id="subject-name" placeholder="jméno a příjmení osoby nebo název společnosti" maxlength="250" autofocus />
+               </div>
+               
+               <div class="col-2">
+                  <label for="subject-rcic" class="entry-label">rodné číslo nebo IČ</label>
+                  <input type="text" name="subject-rcic" id="subject-rcic" maxlength="11" />
+               </div>
+
+               <br />
+
+               <div class="col-4">
+                  <label for="subject-street" class="entry-label">ulice</label>
+                  <input type="text" name="subject-street" id="subject-street" placeholder="název ulice" maxlength="250" />
+               </div>
+               
+               <div class="col-2">
+                  <label for="subject-houseNumber" class="entry-label">číslo popisné/orientační</label>
+                  <input type="text" name="subject-houseNumber" id="subject-houseNumber" placeholder="" maxlength="20" />
+               </div>
+               
+               <br />
+               
+               <div class="col-4">
+                  <label for="subject-city">město</label>
+                  <input type="text" name="subject-city" id="subject-city" placeholder="název města" maxlength="150" />
+               </div>
+               
+               <div class="col-2">
+                  <label for="subject-zipcode">PSČ</label>
+                  <input type="text" name="subject-zipcode" id="subject-zipcode" placeholder="xxx xx" maxlength="20" />
+               </div>
+
+               <br />
+
+               <div class="col-4">
+                  <label for="subject-country">stát</label>
+                  <select name="subject-country" id="subject-country">
+                     <option value="1">Albánie</option>
+                     <option value="2">Andora</option>
+                     <option value="80" selected>Česká republika</option>
+                     <option value="240">Slovensko</option>
+                     <option value="241">Slovinsko</option>
+                  </select>
+               </div>
+               
+               <br />
+               
+               <div class="col-4">
+                  <label for="subject-phone">telefon</label>
+                  <input type="text" name="subject-phone" id="subject-phone" placeholder="+420 XXX YYY ZZZ" pattern="^(00|\+)((2(0|7)|3([1-4]|6|9)|4(0|1|[3-9])|5[1-8]|6[0-6]|7|8(1|2|4|6)|9([0-5]|8))|([0-9]{3}))[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?[0-9]{3}$" maxlength="150" />
+               </div>
+               
+               <br />
+
+               <div class="col-6">
+                  <label for="subject-email">e&ndash;mail</label>
+                  <input type="text" name="subject-email" id="subject-email" placeholder="e&ndash;mail" pattern="^([a-zA-Z0-9]+[_a-zA-Z0-9-]*(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9]+([\._a-zA-Z0-9-])+)+(\.[_a-zA-Z0-9-])*(\.[a-zA-Z]{2,4})$" maxlength="150" />
+               </div>
+            </fieldset>
+
+            <fieldset class="column5 notes">
+               <legend>Poznámky</legend>
+               <div class="col-5">
+                  <label for="subject-notes" class="hidden">poznámky</label>
+                  <textarea name="subject-notes" id="subject-notes" maxlength="5000"></textarea>
+               </div>
+            </fieldset>
+            
+            <br />
+            
+            <div class="subject-usedValues">
+               <h2>Údaje do smluv</h2>
+               
+                <fieldset class="floatLeft column6">
+                  <legend>Identifikační údaje</legend>
+                  
+                  <div class="col-4">
+                     <span class="entry-label">jméno</span>
+                     <span class="entry-value">Tady je neci jmeno</span>
+                  </div>
+                  
+                  <div class="col-2">
+                     <span class="entry-label">rodné číslo nebo IČ</span>
+                     <span class="entry-value">998877/5544</span>
+                  </div>
+                  
+                  <br />
+                  
+                  <div class="col-6 heightAuto">
+                     <span class="entry-label">
+                        adresa
+                        <span class="fa fa-check colorGreen">ověřena</span>
+                     </span>
+                     <div class="entry-value address">
+                        Komenského náměství  214/55b
+                        <br />198 91  Praha - Barandov
+                        <br />Česká republika
+                     </div>
+
+                     <input type="button" class="button-primary" name="subject-checkAddress" value="ověřit adresu" />
+                  </div>
+                  
+                </fieldset>
+               
+               <fieldset class="floatRight column5 subject-paymentData">
+                  <legend>Platební údaje</legend>
+                  
+                  <div class="component-dropdownMenu popupBottomRight">
+                     <a class="fa fa-caret-down-after">v roli pachtýře</a>
+                     <ul class="listOfRadiobuttons component-dropdownMenu-popupContent">
+                        <li><a href="#" title="Platební údaje v roli propachtovatele.">v roli propachtovatele</a></li>
+                        <li class="selected"><a href="#" title="Platební údaje v roli pachtýře.">v roli pachtýře</a></li>
+                     </ul>
+                  </div>
+                  
+                  <div class="col-2">
+                     <label for="subject-annualBill" class="entry-label">roční vyúčtování</label>
+                     <select name="subject-annualBill" id="subject-annualBill" required>
+                        <option value="">vyberte</option>
+                        <option value="1" selected>provádět</option>
+                        <option value="2">neprovádět</option>
+                     </select>
+                  </div>
+                  
+                  <div class="col-3">
+                     <label for="subject-sendInvoice" class="entry-label">odeslání faktury</label>
+                     <select name="subject-sendInvoice" id="subject-sendInvoice" required>
+                        <option value="">vyberte</option>
+                        <option value="1">požadováno protistranou</option>
+                        <option value="2" selected>neprovádět</option>
+                     </select>
+                  </div>
+                  
+                  <br />
+
+                  <div class="col-5">
+                     <label for="subject-paymentMethod" class="entry-label">způsob platby</label>
+                     <select name="subject-paymentMethod" id="subject-paymentMethod" required>
+                        <option value="">vyberte způsob platby</option>
+                        <option value="1">hotově</option>
+                        <option value="2">poštovním poukazem (složenkou)</option>
+                        <option value="3" selected>převodem na účet</option>
+                        <option value="4">v naturáliích</option>
+                     </select>
+                  </div>
+                  
+                  <br />
+                  
+                  <div class="col-5">
+                     <label for="subject-accountNumber" class="entry-label">číslo účtu</label>
+                     <input type="text" name="subject-accountNumber" id="subject-accountNumber" placeholder="předčíslí&ndash;číslo účtu" required maxlength="50" />
+                  </div>
+                  
+                  <br />
+
+                  <div class="col-5">
+                     <label for="subject-bank" class="entry-label">bankovní ústav</label>
+                     <select name="subject-bank" id="subject-bank" required>
+                        <option value="">vyberte bankovní ústav</option>
+                        <option value="0800">0800 &ndash; Česká spořitelna</option>
+                        <option value="3030">3030 &ndash; Air Bank</option>
+                     </select>
+                  </div>
+                  
+                  <br />
+                  
+                  <div class="col-2">
+                     <label for="subject-variableSymbol" class="entry-label">variabilní symbol</label>
+                     <input type="text" name="subject-variableSymbol" id="subject-variableSymbol" maxlength="20" />
+                  </div>
+                  
+                  <div class="col-2">
+                     <label for="subject-specificSymbol" class="entry-label">specifický symbol</label>
+                     <input type="text" name="subject-specificSymbol" id="subject-specificSymbol" maxlength="20" />
+                  </div>
+                  
+               </fieldset>
+               
+               <div class="floatClearer"></div>
+            </div>
+
+         </form>
+         
+         <div class="component-itemDetail-content">
+            <h2>Smlouvy</h2>
+            <table class="component-tabulatedList contracts floatClearer">
+               <thead>
+                  <tr>
+                     <th class="selected sortDesc">
+                        <a href="#">smlouva</a>
+                     </th>
+                     <th>
+                        <a href="#">uzavřena s</a>
+                     </th>
+                     <th>
+                        <a href="#">vytvořena</a>
+                     </th>
+                     <th>
+                        <a href="#">zaniká k</a>
+                     </th>
+                     <th>
+                        <a href="#">stav</a>
+                     </th>
+                  </tr>
+               </thead>
+               <tbody class="scrollable">
+                  <tr>
+                     <td class="contractNumber">
+                        <a href="#">18441516</a>
+                     </td>
+                     <td>
+                        <a href="#" title="Tomáš Zakulič, r.č. 887755/4455, Brno, Ulice XA 45/741">Tomáš Zakulič, <span>r.č. 887755/4455</span><br /><span class="address">Brno, Ulice XA 45/741</span></a>
+                     </td>
+                     <td>
+                        <a href="#">5. 3. 2010 <br/><span>na <span>4 roky</span></span></a>
+                     </td>
+                     <td>
+                        <a href="#">5. 3. 2015</a>
+                     </td>
+                     <td>
+                        <a href="#">platná</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="contractNumber">
+                        <a href="#">18441516</a>
+                     </td>
+                     <td>
+                        <a href="#" title="Pavel Vodehnal, r.č. 887755/4455, Olomouc, UliceUličovič XA 45">Pavel Vodehnal, <span>r.č. 887755/4455</span><br /><span class="address">Olomouc, UliceUličovič XA 45</span></a>
+                     </td>
+                     <td>
+                        <a href="#">15. 5. 2010 <br/><span>na <span>neurčito</span></span></a>
+                     </td>
+                     <td>
+                        <a href="#"></a>
+                     </td>
+                     <td>
+                        <a href="#">platná</a>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         
+      </section>
+    </body>
+</html>

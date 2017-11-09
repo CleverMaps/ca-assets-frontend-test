@@ -1,0 +1,112 @@
+/* 
+   Created on  :  Aug 28, 2014, 10:26:20 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-accountForm
+*/
+
+.component-accountForm{
+    position: relative;
+    background-color: @grayFA;
+    border: 1px solid @grayEC;
+    border-radius: 0 0 3px 3px;
+    width: 400px;
+    margin: 52px 0 0 auto;
+    padding: @gridRowHeight @gridRowHeight 28px;
+
+
+    &:not(.sent) .report{
+        height: 0;
+        padding: 0;
+
+        p, div{
+            opacity: 0;
+        }
+    }
+
+    &.sent .report{
+        height: 32px;
+        .transition(height, .7s, ease);
+
+        p, div{
+            opacity: 1;
+            .transition(opacity, .7s, ease, .5s);
+        }
+    }
+
+    a.fa-angle-left{
+        position: absolute;
+        top: -56px;
+        left: 0;
+        color: @grayB4;
+        font-size: @textSizeSectionTitle;
+        line-height: 56px;
+        text-align: center;
+        height:  56px;
+        width: 32px;
+
+        &:hover{
+            background-color: @blackOpacity20;
+            color: @grayF6;
+        }
+    }
+
+    legend{
+        position: absolute;
+        top: -56px;
+        left: -1px;
+        .backgroundCarbon();
+        border-radius: 3px 3px 0 0;
+        color: @grayF6;
+        font-size: @textSizeLocalTitle;
+        height: 56px;
+        width: 400px;
+        padding: 18px @gridRowHeight 12px;
+    }
+
+    label{
+        font-size: @textSizeBigger;
+
+        .description{
+            float: right;
+            font-size: @textSizeSmall;
+            line-height: 12px;
+            padding-top: 10px;
+        }
+
+        .message{
+            position: relative;
+            top: -6px;
+            font-size: @textSizeSmall;
+            line-height: @textSizeBasic!important;
+            padding-left: 6px;
+        }
+    }
+
+    input[type="text"], input[type="password"]{
+        font-size: @textSizeBasic;
+        width: 318px;
+    }
+
+    fieldset > p{
+        padding-top: @gridRowHeight;
+
+        a{
+            cursor: pointer;
+            color: @colorBlue;
+            text-decoration: underline;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+
+    div.divSubmit{
+        text-align: center;
+        padding: @gridRowHeight 0 0;
+
+        input[type="submit"]{
+            font-size: @textSizeBasic;
+        }
+    }
+}

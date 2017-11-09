@@ -1,0 +1,50 @@
+/* 
+   Created on  :  Aug 28, 2014, 10:26:20 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-accountPage
+*/
+
+.component-accountPage{
+    min-height: 100%;
+
+
+    > div:first-of-type{
+        background-color: @CleverMapsColor;
+        height: 120px;
+
+        h1{
+            display: none;
+        }
+    }
+
+    > div:nth-of-type(2){
+        position: relative;
+        width: 400px;
+        margin: 0 auto;
+        padding: 60px 0;
+
+        > img{
+            position: absolute;
+            left: 0;
+            top: -52px;
+        }
+    }
+
+    > div:nth-of-type(3){
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 80px;
+        width: 100%;
+        z-index: -1;
+
+        > a{
+            display: block;
+            line-height: 0;
+            height: 80px;
+            width: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}

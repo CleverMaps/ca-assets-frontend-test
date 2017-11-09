@@ -1,0 +1,312 @@
+/* 
+    Created on  :  Mar 5, 2016, 10:00:38 AM
+    Author      :  GEe <email@jiri-rusnak.com>
+    file        :  component-tooltip
+*/
+
+.component-tooltip{
+    @headerBackgroundColor: @gray50;
+    @contentBackgroundColor: @colorWhite;
+    @contentBorderColor: @grayB4;
+    @tooltipZindex: 3001;
+    
+    .boxDropShadow(1px 2px 6px 0px, rgba(50, 50, 50, 0.4));
+    position: relative;
+    display: inline-block;
+    border-radius: @borderRadius;
+    width: 360px;
+    z-index: @tooltipZindex;
+
+    &::before, &::after{
+        content: '';
+        position: absolute;
+        border: 10px solid transparent;
+        height: 0;
+        width: 0;
+    }
+
+    &::before{
+        z-index: @tooltipZindex + 1;
+    }
+
+    &::after{
+        border-width: 12px;
+        z-index: @tooltipZindex + 2;
+    }
+    
+    &.pointerHeaderTopLeft, &.pointerHeaderTopRight, &.pointerHeaderTopCenter{
+
+        &::before{
+            top: -10px;
+            border-top: none;
+            border-bottom-color: @headerBackgroundColor;
+        }
+        
+        &:after{
+            display: none;
+        }
+    }
+
+    &.pointerHeaderTopLeft::before{
+        left: @gridGap;
+    }
+
+    &.pointerHeaderTopCenter::before{
+        left: 50%;
+        margin-left: -10px;
+    }
+
+    &.pointerHeaderTopRight::before{
+        right: @gridGap;
+    }
+
+    &.pointerHeaderLeft, &.pointerHeaderRight{
+        
+        &::before{
+            border-width: 9px;
+            top: 12px;
+        }
+                
+        &:after{
+            display: none;
+        }
+    }
+    
+    &.pointerHeaderLeft::before{
+        border-left: none;
+        border-right-color: @headerBackgroundColor;
+        left: -9px;
+    }
+
+    &.pointerHeaderRight::before{
+        border-right: none;
+        right: -9px;
+        border-left-color: @headerBackgroundColor;
+    }
+    
+    &.pointerBodyLeft, &.pointerBodyRight{
+        
+        &::before, &:after{
+            border-width: 9px;
+            bottom: @gridGap;
+        }
+    }
+    
+    &.pointerBodyLeft{
+
+        &::before, &::after{
+            border-left: none;
+        }
+
+        &::before{
+            border-right-color: @contentBorderColor;
+            left: -9px;
+        }
+
+        &::after{
+            border-right-color: @contentBackgroundColor;
+            left: -8px;
+        }
+    }
+
+    &.pointerBodyRight{
+
+        &::before, &::after{
+            border-right: none;
+        }
+
+        &::before{
+            border-left-color: @contentBorderColor;
+            right: -9px;
+        }
+
+        &::after{
+            border-left-color: @contentBackgroundColor;
+            right: -8px;
+        }
+    }
+    
+    &.pointerBodyBottomLeft, &.pointerBodyBottomRight, &.pointerBodyBottomCenter{
+        
+        &::before, &::after{
+            border-bottom: none;
+        }
+        
+        &::before{
+            bottom: -10px;
+            border-top-color: @contentBorderColor;
+        }
+        
+        &::after{
+            bottom: -9px;
+            border-top-color: @contentBackgroundColor;
+        }
+
+    }
+    
+    &.pointerBodyBottomLeft{
+
+        &::before{
+            left: @gridGap;
+        }
+
+        &::after{
+            left: @gridGap - 2px;
+        }
+    }
+    
+    &.pointerBodyBottomCenter{
+
+        &::before{
+            left: 50%;
+            margin-left: -10px;
+        }
+
+        &::after{
+            left: 50%;
+            margin-left: -12px;
+        }
+        
+    }
+    
+    &.pointerBodyBottomRight{
+
+        &::before{
+            right: @gridGap;
+        }
+
+        &::after{
+            right: @gridGap - 2px;
+        }
+    }
+    
+    h1{
+        background-color: @headerBackgroundColor;
+        border-radius: @borderRadius @borderRadius 0 0;
+        color: @colorWhite;
+        font-size: @textSizeBigger;
+        font-weight: 400;
+        line-height: @lineHeight + @gridSmallGap;
+        height: @lineHeight + @gridSmallGap;
+        padding: 0 @gridGap;
+    }
+    
+    .component-tooltip-content{
+        background-color: @contentBackgroundColor;
+        border: 1px solid @contentBorderColor;
+        border-top: none;
+        border-radius: 0 0 @borderRadius @borderRadius;
+        padding: @lineHeightBasic + @gridSmallGap @gridGap;
+        
+        *{
+            line-height: @lineHeightBasic;
+        }
+        
+        & > * + *{
+            padding-top: @lineHeightBasic;
+        }
+
+        h2{
+            font-size: @textSizeBigger;
+            font-weight: 600;
+            line-height: @lineHeight;
+        }
+    }
+    
+    #notificationNoSection p{
+        padding: 16px @gridGap;
+    }
+}
+
+.component-tooltipContainer{
+    position: relative;
+    
+    &:not(.component-announcements):hover .component-tooltip{
+        display: block;
+    }
+    
+    .component-tooltip{
+        display: none;
+        position: absolute;
+        
+        &.opened{
+            display: block;
+        }
+        
+        &.positionedLeft{
+            margin: -@gridRowHeight 8px 0 0;
+            right: 100%;
+        }
+
+        &.positionedRight{
+            margin: -@gridRowHeight 0 0 8px;
+            left: 100%;
+        }
+
+        &.positionedBottom, &.positionedBottomCenter, &.positionedBottomLeft, &.positionedBottomRight{
+            top: @lineHeight;
+        }
+
+        &.positionedTop, &.positionedTopCenter, &.positionedTopLeft, &.positionedTopRight{
+            bottom: 100%;
+            margin-bottom: 2px;
+        }
+
+        &.positionedBottomCenter, &.positionedTopCenter{
+            left: -80%;
+        }
+        
+        &.positionedTopLeft, &.positionedBottomLeft{
+            left: 0;
+        }
+
+        &.positionedTopRight, &.positionedBottomRight{
+            right: 0;
+        }
+
+        &.positionedBottomLeft{
+            margin-left: -@gridGap;
+        }
+    }
+}
+
+.jsTooltipContainer{
+    position: absolute;
+    
+    .component-tooltip{
+        position: absolute;
+        
+        &.positionedBottom, &.positionedBottomCenter, &.positionedBottomLeft, &.positionedBottomRight{
+            top: @lineHeight;
+        }
+        
+        &.positionedTop, &.positionedTopCenter, &.positionedTopLeft, &.positionedTopRight, &.positionedBodyLeft, &.positionedBodyRight{
+            bottom: 100%;
+        }
+
+        &.positionedBodyLeft, &.positionedBodyRight{
+            margin-bottom: -48px;
+        }
+
+        &.positionedLeft, &.positionedBodyLeft{
+            right: 100%;
+        }
+
+        &.positionedRight, &.positionedBodyRight{
+            left: 100%;
+        }
+
+        &.positionedBottomCenter, &.positionedTopCenter{
+            left: 50%;
+            .transform(translate(-50%, 0) );
+        }
+        
+        &.positionedBottomLeft, &.positionedTopLeft{
+            left: 0;
+        }
+
+        &.positionedBottomRight, &.positionedTopRight{
+            right: 0;
+        }
+    }
+}

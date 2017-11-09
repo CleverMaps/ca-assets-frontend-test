@@ -1,0 +1,481 @@
+/* 
+   Created on  :  Jun 26, 2014, 10:16:22 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-tabulatedList
+*/
+
+.component-tabulatedList{
+    border-collapse: separate;
+    line-height: @lineHeightBasic;
+    width: 100%;
+
+    a{
+        display: block;
+        text-decoration: none;
+    }
+
+    thead th{
+        position: relative;
+        color: @gray80;
+        padding-top: 16px;
+        line-height: 24px;
+        white-space: nowrap;
+        font-weight: 400;
+
+        &.selected{
+
+            &.sortAsc a::after{
+                content: "\f160";
+            }
+
+            &.sortDesc a::after{
+                content: "\f161";
+            }
+
+            a::after{
+                opacity: 1 !important;
+            }
+
+            &:hover{
+
+                &.sortAsc a::after{
+                    content: "\f161";
+                }
+
+                &.sortDesc a::after{
+                    content: "\f160";
+                }
+            }
+        }
+
+        &.money{
+            text-align: right;
+            padding-right: @buttonHeight;
+
+            a{
+                text-align: right;
+            }
+        }
+
+        > a:not(.fa){
+            cursor: pointer;
+            display: block;
+            color: @colorBlue;
+            font-family: @textFont;
+            font-size: @textSizeBasic;
+            line-height: 24px;
+
+            &::after{
+                content: "\f160";
+                display: inline-block;
+                font-family: @iconFont;
+                font-size: @iconSizeBasic!important;
+                padding-left: 4px;
+                opacity: 0
+            }
+
+            &:hover::after{
+                color: @gray80;
+                opacity: 1
+            }
+
+            &.selected{
+
+                &::after{
+                    opacity: 1
+                }
+
+                &.sortAsc::after{
+                    content: "\f160";
+                }
+
+                &.sortDesc::after{
+                    content: "\f161";
+                }
+
+                &:hover{
+
+                    &.sortAsc::after{
+                        content: "\f161";
+                    }
+
+                    &.sortDesc::after{
+                        content: "\f160";
+                    }
+                }
+            }
+        }
+
+        > a.fa{
+            position: absolute;
+            top: 11px;
+            left: 3px;
+
+            display: inline-block;
+            border-radius: @borderRadius;
+            line-height: 24px;
+            text-align: center;
+            height: 24px;
+            width: @buttonHeight;
+
+            &:hover{
+                cursor: pointer;
+                color: @gray28;
+                background-color: @listItemHoverBackgroundColor;
+            }
+
+            + a.fa{
+                left: 44px;
+            }
+        }
+
+        &:last-of-type a.fa{
+            left: 2px;
+        }
+
+        input[type="checkbox"] + label.showAsCheckbox{
+            margin-bottom: -4px;
+        }
+    }
+    
+    thead.hidden + tbody tr{
+
+        &:first-of-type td, &:first-of-type.selected td{
+            border-top: none;
+        }
+    }
+
+    thead.hidden + tbody tr:first-of-type td:first-of-type{
+        border-top: none;
+    }
+
+    tbody tr{
+        @cellHeight: @gridRowHeight + 2px;
+
+        &.highlightChanges{
+
+            td:not(.columnButton){
+                color: @colorRedAlert!important;
+
+                a, a span, span{
+                    color: @colorRedAlert!important;
+                }
+            }
+
+            .fa-warning{
+                display: block;
+                float: left;
+                border-radius: @borderRadius;
+                color: @colorRedAlert!important;
+                line-height: @lineHeight;
+                text-align: left;
+                height: @lineHeight;
+                width: @gridGap + 4px;
+                padding-left: 1px;
+
+                &:hover{
+                    color: @gray28;
+                }
+
+                ~ a br{
+                    clear: none!important;
+                }
+
+                & + a{
+                    float: left;
+                }
+            }
+        }
+
+        &.component-tabulatedList-expandableRow{
+
+            &.closed{
+
+                .component-tabulatedList-expandableIcon::before{
+                    content: "\f078";
+                }
+
+                .expandedContainer{
+                    display: none;
+                }
+            }
+
+            &.expanded{
+
+                .component-tabulatedList-expandableIcon::before{
+                    content: "\f077";
+                }
+            }
+
+            &:hover .component-tabulatedList-expandableIcon::before{
+                color: @gray50;
+            }
+
+            td:first-of-type{
+                width: 32px;
+                padding-top: 4px;
+
+                &.addLeftPadding{
+                    width: 56px;
+                    padding-left: 30px;
+                }
+            }
+
+            .component-tabulatedList-expandableIcon{
+                cursor: pointer;
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0px;
+                height: 100%;
+                width: 24px;
+
+                &::before{
+                    display: block;
+                    color: @gray80;
+                    font-family: @iconFont;
+                    font-size: @iconSizeBasic!important;
+                    text-align: center;
+                    width: 24px;
+                    padding-top: 14px;
+                }
+            }
+
+            .expandedContainer{
+                line-height: @textSizeBasic;
+                padding-bottom: 8px;
+
+                &.addTopPadding{
+                    padding-top: 18px;
+                }
+            }
+            
+            .fa-warning{
+                color: @colorRedAlert;
+            }
+        }
+
+        &:last-of-type a.fa{
+            left: -1px;
+        }
+
+        &:hover td, &.selected td{
+            color: @gray28;
+            background-color: @grayFA;
+
+            &:first-of-type.recordState, &.columnButton .fa{
+                color: @gray50;
+
+                &:hover{
+                    color: @gray28;
+                }
+            }
+        }
+
+        &.selected td a.fa-gear{
+            color: @gray28;
+            background-color: @blackOpacity7;
+        }
+
+        td{
+            cursor: pointer;
+            position: relative;
+            border-top: 1px solid @grayEC;
+            line-height: @lineHeightBasic;
+            height: @cellHeight;
+            padding: 6px 0 2px;
+            vertical-align: top;
+
+            &:first-of-type.recordState{
+                color: @gray70;
+                text-align: center;
+                vertical-align: middle;
+                width: @gridRowHeight;
+                border-top: 0;
+
+                a.fa{
+                    display: inline-block;
+                    border-radius: @borderRadius;
+                    color: @gray80;
+                    text-align: center;
+                    line-height: 36px;
+                    width: @gridRowHeight;
+                    padding: 0;
+
+                    &:hover{
+                        color: @gray28;
+                        background-color: @listItemHoverBackgroundColor;
+                    }
+                }
+            }
+
+            &.columnButton{
+                line-height: @lineHeight!important;
+                text-align: center;
+                vertical-align: middle;
+                width: 40px;
+                padding-top: 0;
+
+                a{
+                    .button-icon();
+                    position: relative;
+                    top: 8px;
+                }
+            }
+
+            &.money{
+                padding-right: @gridGap;
+                text-align: right;
+            }
+
+            input[type="checkbox"] + label.showAsCheckbox{
+                margin-top: 10px;
+            }
+
+            a{
+                color: @gray28;
+                height: @cellHeight;
+                margin: -6px 0 -2px 0;
+                padding: 5px 0 0 0;
+                overflow: hidden;
+            }
+
+            .textDescription{
+                display: inline-block;
+                padding: 1px 0 0 1px;
+            }
+        }
+
+        .secondLine{
+            display: block;
+            color: @gray70;
+            font-size: @textSizeSmall;
+            line-height: @textSizeBasic;
+            padding: 2px 0 4px;
+        }
+
+        a.fa-gear::before{
+            position: relative;
+            top: 1px;            
+        }
+
+        input[type="checkbox"]{
+
+            + label:not(.showAsCheckbox){
+                .button-icon();
+
+                &:hover, &:focus{
+                    background-color: @listItemHoverBackgroundColor;
+                }
+
+                &::after{
+                    position: relative;
+                    top: 2px;
+                    width: @lineHeight;
+                }
+            }
+
+            &:not(:checked) + label:not(.showAsCheckbox)::after{
+                color: @gray50;
+            }
+        }
+    }
+
+    &.withoutPointer tbody tr td{
+        cursor: default;
+    }
+
+    .column-checkbox{
+        text-align: center;
+        width: 32px;
+        padding-top: 3px;
+    }
+
+    .component-dropdownMenu, .component-dropdownMenu-click{
+
+        li:hover .fa-check.fa-check-after{
+
+            &::before, &::after{
+                color: @gray50;
+            }
+        }
+
+        .fa-check.fa-check-after{
+            position: absolute;
+            left: 12px;
+            top: 32px;
+
+            &::before, &::after{
+                color: @gray70;
+            }
+
+            &::before{
+                position: absolute;
+                top: -4px;
+            }
+
+            &::after{
+                position: absolute;
+                top: 4px;
+            }
+        }
+
+        a{
+            text-decoration: none!important;
+        }
+    }
+}
+
+/* Doplneni obsahu pred prvni bunku */
+.component-tabulatedList{
+
+    thead.hidden + tbody tr{
+
+        &:first-of-type:hover td:first-of-type::before, &:first-of-type.selected td:first-of-type::before{
+            border-top: none;
+            top: 0;
+        }
+    }
+
+    tbody tr{
+
+        &:last-of-type:hover td:first-of-type::before, &:last-of-type.selected td:first-of-type::before{
+            border-bottom: none;
+            bottom: 0;
+        }
+
+        &.component-tabulatedList-expandableRow:hover td:first-of-type::before{
+            display: none;
+        }
+
+        &:hover td, &.selected td{
+
+            &.column-checkbox:first-of-type::before{
+                display: none;
+            }
+
+            &:first-of-type::before{
+                content: " ";
+                display: block;
+                position: absolute;
+                background-color: @grayFA;
+                border: 1px solid @grayEC;
+                border-left: none;
+                border-right: none;
+                bottom: -1px;
+                top: -1px;
+                width: @gridSmallGap;
+                margin: 0 0 0 -@gridSmallGap;
+            }
+
+            &.columnButton .fa:hover{
+                color: @gray28;
+            }
+        }
+
+    }
+}
+
+#searchResult-list.ps-active-y{
+    padding-right: 20px;
+}

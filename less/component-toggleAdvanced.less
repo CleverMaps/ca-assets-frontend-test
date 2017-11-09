@@ -1,0 +1,99 @@
+/* 
+   Created on  :  14.5.2014, 14:04:06
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-toggleAdvanced
+*/
+
+.component-toggleAdvanced{
+    .disableTextSelection();
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding-right: 124px;
+
+    .toggleMessage{
+        display: block;
+        font-size: @textSizeBasic;
+        line-height: 16px;
+        padding-top: 4px;
+        height: 26px;
+    }
+
+    .preview{
+        display: block;
+        position: absolute;
+        right: @gridGap;
+        top: 0;
+        min-width: 80px;
+        text-align: center;
+        font-weight: 600;
+        line-height: 26px;
+    }
+
+    .switcher{
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: @gridGap;
+        top: 0;
+        background-color: @listItemHoverBackgroundColor;
+        border-radius: 16px;
+        color: @colorWhite;
+        height: 22px;
+        min-width: 80px;
+
+        > span{
+            cursor: pointer;
+            display: block;
+            position: relative;
+            top: -1px;
+            border-radius: 16px;
+            color: @colorWhite;
+            font-size: @textSizeSmall;
+            font-weight: 600;
+            height: 22px;
+            line-height: 21px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0px @gridGap;
+        }
+    }
+
+    input:checked + span > span{
+        background: @colorBlue;
+        margin: 0 @gridGap 0 0;
+
+        .transition(margin, .25s, ease);
+
+        > span:first-of-type{
+            display: inline-block;
+        }
+
+        > span:last-of-type{
+            display: none;            
+        }
+
+        &.trueGreen{
+            background: @colorGreen;
+        }
+    }
+
+    input:not(:checked) + span > span{
+        background: @gray80;
+        margin: 0 0 0 @gridGap;
+
+        &.falseRed{
+            background: @colorRed;
+        }
+
+        .transition(margin, .25s, ease);
+
+        > span:first-of-type{
+            display: none;
+        }
+
+        > span:last-of-type{
+            display: inline-block;
+        }
+    }
+}

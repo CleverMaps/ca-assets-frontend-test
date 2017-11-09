@@ -1,0 +1,64 @@
+/* 
+    Created on  :   21.9.2015, 14:17:52
+    Author      :   GEe
+    file        :   component-expandableContainer
+*/
+
+.component-expandableContainer{
+    
+    @paddingTop: 4px;
+    
+    > h1{
+        cursor: pointer;
+        position: relative;
+        color: @gray50;
+        font-size: @textSizeBigger;
+        font-weight: 300;
+        line-height: @lineHeight;
+        height:  @lineHeight;
+        padding-top: @paddingTop;
+        
+        &::before{
+            .addIcon("\f078");
+            position: relative;
+            top: -2px;
+            color: @gray80;
+            line-height: @lineHeight;
+            text-align: left;
+            height:  @lineHeight;
+            width: @gridGap;
+        }
+        
+        .additionalInformation{
+            color: @gray28;
+            float: right;
+            font-size: @textSizeBigger;
+            font-weight: 400;
+            height:  @lineHeight;
+            line-height: @lineHeight;
+            margin-top: -@paddingTop;
+            padding-top: @paddingTop;
+
+            .itemUnit{
+                color: @gray70;
+                font-size: 11px;
+            }
+        }
+    }
+    
+    > div {
+        display: none;
+    }
+    
+    &.opened{
+        margin-bottom: @lineHeight;
+        
+        > h1::before{
+            content: "\f077";
+        }
+        
+        > div {
+            display: block;
+        }
+    }
+}

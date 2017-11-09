@@ -1,0 +1,264 @@
+/* 
+   Created on  :  Jul 14, 2014, 11:20:31 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-itemDetail
+*/
+
+#component-itemDetail{
+    padding: @gridRowHeight @gridRowHeight @gridBasicDimension;
+    min-width: 1080px;
+
+    &:not(.modeEdit){
+        line-height: @lineHeightBasic;
+
+        .entry-value, entry-valueMultiLine{
+            line-height: @lineHeightBasic;
+            padding-top: 2px;
+        }
+
+        .component-dropdownMenu.formElement{
+
+            > a, > label{
+                color: @gray28;
+
+                &::after{
+                    color: @gray50;
+                }
+            }    
+        }
+    }
+
+    &.modeEdit{
+
+        .component-dropdownMenu.formElement{
+
+            &:not(.opened) > a, &:not(.opened)> label{
+                border: 1px solid @grayE4;
+                border-left-width: 3px;
+                background-color: @colorWhite;
+                line-height: @lineHeight - 2px;
+                height: @lineHeight;
+                padding-right: 11px!important;
+            }
+        }
+    }
+
+    .component-itemDetail-headerContent, .component-itemDetail-content{
+        position: relative;
+        min-width: 916px;
+        max-width: 1080px;
+        margin: 0 auto;
+        clear: both;
+        height: 100%;
+    }
+
+    > header{
+        padding-top: @lineHeightBasic * 2;
+
+        .component-dropdownMenu{
+
+            &:hover, &:focus{
+                .component-dropdownMenu.opened();
+            }
+        }
+
+        a.stepBack{
+            left: 0;
+        }
+    }
+
+    h2{
+        font-size: @textSizeGroupTitle;
+        font-weight: 400;
+        line-height: @gridRowHeight;
+        height: @gridRowHeight * 2;
+        padding-top: @gridRowHeight;
+    }
+
+    h3{
+        clear: both;
+        color: @gray28;
+        font-size: @textSizeBigger;
+        font-weight: 400;
+        height: @lineHeight * 3;
+        line-height: @lineHeight;
+        padding-top: @lineHeight * 2;
+    }
+
+    fieldset{
+        position: relative;
+        display: block;
+        margin-top: @lineHeight * 3 + @gridSmallGap;
+
+        legend{
+            position: absolute;
+            top: -(@lineHeight + @gridSmallGap);
+            left: 0;
+            color: @gray28;
+            font-size: @textSizeGroupTitle;
+            line-height: @lineHeight;
+        }
+
+        ul li{
+            line-height: 21px;
+        }
+
+        #subject-houseNumber{
+            width: 48%;
+        }
+
+        #subject-houseNumber-second{
+            width: 48%;
+            margin-left: 2%;
+        }
+
+        #subject-notes{
+            height: 135px;
+        }
+    }
+
+
+
+    .fa-info-circle{
+        position: relative;
+        top: -@gridSmallGap;
+        left: @gridGap;
+        color: @colorBlue;
+        cursor: help;
+
+        .component-tooltip.positionedRight{
+            color: @gray50;
+            margin: -38px 0 0 16px;
+        }
+    }
+
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8{
+        padding-top: 16px;
+
+        &.extendedColumnHeight{
+            height: @gridBasicDimension + @gridGap;
+        }
+    }
+
+    .col-2{
+
+        .component-dropdownMenu, .component-dropdownMenu-click{
+            .calculateGridColumnSize(2);
+
+            > a{
+                display: block;
+            }
+        }
+
+        .dateType{
+            .calculateGridColumnSize(2);
+        }
+    }
+
+    br{
+        line-height: 1px;
+        clear: left;
+    }
+
+    input{
+
+        &[type="text"]{
+            float: left;
+            padding: 0 8px;
+        }
+
+        &:focus + select.itemUnit{
+            border-color: @colorBlue;
+        }
+
+        &.entry-valueMoney.longUnits{
+            padding-right: 84px !important;
+
+            + .itemUnit{
+                margin: 9px 0 0 -80px;
+            }
+        }
+    }
+
+    .cuzk-map{
+        width: 100%
+    }
+
+    .component-tabulatedList td.columnButton a.fa-exclamation-triangle-after{
+
+        &::after{
+            color: @colorRedAlert;
+            font-size: @textSizeSmall;
+            position: absolute;
+            top: 4px;
+            left: 19px;
+        }
+    }
+}
+
+.addedTooltip .entry-value{
+    display: inline-block;
+    text-decoration: none;
+}
+
+.entry-label{
+    display: block;
+    color: @gray70;
+    font-size: @textSizeSmall;
+    line-height: 16px;
+}
+
+.itemUnit{
+    .disableTextSelection();
+    .textDescription();
+}
+
+.entry-value, entry-valueMultiLine{
+    display: block;
+    color: @gray28;
+    font-weight: 600;
+    line-height: @lineHeight;
+    text-decoration: none;
+
+    .itemUnit{
+        padding-left: 0;
+    }
+}
+
+.entry-valueMultiLine{
+    padding-top: @gridSmallGap;
+    line-height: @lineHeightBasic;
+
+    *{
+        font-weight: 600;
+    }
+}
+
+.entry-valueMoney{
+    .calculateGridColumnSize(1.65);
+    display: inline-block;
+    text-align: right;
+}
+
+input[type="text"].entry-valueMoney{
+    .calculateGridColumnSize(2);
+    padding-right: 40px !important;
+    text-align: right;
+}
+
+:not(input).entry-valueMoney{
+    .calculateGridColumnSize(1.7);
+    display: inline-block;
+    text-align: right;
+}
+
+.entry-valueOutdated{
+    cursor: help;
+    text-decoration: line-through!important;
+}
+
+textarea{
+    height: @gridRowHeight * 3;
+    padding: 6px 8px;
+    resize: vertical;
+}

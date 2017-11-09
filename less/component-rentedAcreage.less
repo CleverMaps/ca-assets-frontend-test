@@ -1,0 +1,78 @@
+/* 
+    Created on  :   20.9.2015, 8:31:58
+    Author      :   GEe
+    file        :   component-rentedAcreage
+*/
+
+.component-dropdownSingleselect.component-rentedAcreage{
+    
+    @width: 312px;
+            
+    > ul{
+        width: @width;
+        padding-top: @gridSmallGap;
+
+        .component-dropdownSingleselect ul{
+            width: @width - 100px;
+            padding-top: @gridSmallGap;
+
+            li{
+                position: relative;
+
+                .component-rentedAcreage-number{
+                    right: @gridSmallGap!important;
+                    top: 7px;
+                }
+            }
+        }
+    }
+
+    input[name="parcel-rentedAcreage-manual"]{
+        width: (@width - 144px)!important;
+
+        + .itemUnit{
+            margin-top: 0!important;
+        }
+    }
+    
+    .fa-caret-down .component-rentedAcreage-number{
+        font-weight: 600;
+    }
+
+    .component-advancedCheckbox-value.component-inputDropdown{
+        width: (@width - 144px);
+
+        .component-rentedAcreage-number{
+            position: absolute;
+            right: 24px;
+        }
+    }
+
+    .fixedLabelWidth{
+        display: inline-block;
+        width: 80px;
+    }
+
+    .listWithLineDividers{
+
+        label{
+            padding-left: 4px;
+
+            &::after{
+                position: absolute;
+                right: @gridGap;
+            }
+
+            .parcel-acreageNumber{
+                display: inline-block;
+                width: 90px;
+                text-align: right;
+
+                .textDescription{
+                    padding-left: 4px;
+                }
+            }
+        }
+    }
+}
+        

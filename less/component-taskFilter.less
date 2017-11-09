@@ -1,0 +1,145 @@
+/* 
+   Created on  :  Jun 26, 2014, 12:47:50 PM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-taskFilter
+*/
+
+.component-taskFilter{
+    float: right;
+    background-color: @colorWhite;
+    border: 1px solid #ECECEC;
+    border-radius: @borderRadius;
+    height: @lineHeightBasic * 3;
+
+    input, select{
+        margin: 1px 0;
+    }
+
+    > * + *:not(.searchResult-sum)::before{
+        .addVerticalSeparator(56px, 0);
+        margin-top: 10px;
+    }
+
+    > .component-dropdownMenu, > .component-search{
+        float: left;
+        z-index: inherit;
+    }
+
+    > .component-dropdownMenu{
+        height: @lineHeightBasic * 3 - 2;
+        line-height: @lineHeightBasic * 3;
+
+        > a, > label{
+            height: @lineHeightBasic * 3 - 2;
+            line-height: @lineHeightBasic * 3;
+            padding: 0 16px;
+        }
+
+        ul li.twoLines label::after{
+            top: 50%;
+        }
+
+        .component-dropdownMenu-popupContent{
+            top: @lineHeightBasic * 3 - 2;
+            z-index: 15;
+        }
+
+        &.opened > label{
+            z-index: 10;
+        }
+
+        > ul{
+            top: @lineHeightBasic * 3 - 2;
+            z-index: 1004;
+            line-height: @lineHeightBasic * 2;
+
+            input[type="checkbox"] + label:not(.showAsCheckbox) {
+                white-space: nowrap;
+                padding-right: @gridGap;
+            }
+        }
+
+        > input{
+            line-height: 24px;
+            margin-top: 3px;
+            padding: 4px (@lineHeightBasic * 2) 4px 16px;
+            width: 170px;
+        }
+
+        > span{
+            background: #0A467B;
+            .boxDropShadow(0 0 10px, rgba(255, 255, 255, .31));
+        }
+
+        div.fa{
+            top: 0;
+            line-height: @lineHeightBasic * 3;
+            height: @lineHeightBasic * 3;
+            width: @lineHeightBasic * 2;
+            margin: 0;
+            right: 0px;
+            text-align: center;
+
+            &::before{
+                height: 14px;
+                border-radius: @borderRadius;
+                line-height: 14px;
+                top: 50%;
+                width: 14px;
+                margin-top: -6px;
+            }
+        }
+
+        &.showResults{
+            .boxDropShadow(0 6px 5px 0);
+        }
+    }
+
+    > .component-search{
+
+        .component-searchField{
+            border: 0;
+            height: @lineHeightBasic * 3 - 2;
+            line-height: @lineHeightBasic * 3;
+        }
+        
+        .filter-searchResultsContainer{
+            border: none;
+            line-height: @lineHeightBasic * 2;
+            min-width: 360px;
+            top: @lineHeightBasic * 3 - 2;
+            z-index: 1004;
+        }
+        
+        input[type="text"]{
+            width: 160px;
+
+            &.filter-input-subject{
+                width: 340px;
+            }
+
+            & + div.fa{
+                height: @lineHeightBasic * 3;
+                line-height: @lineHeightBasic * 3;
+                width: @lineHeight;
+            }
+        }
+    }
+    
+    input[type="submit"]{
+        background: #085C00;
+        border-radius: 0 @borderRadius @borderRadius 0;
+        height: @lineHeightBasic * 3;
+        padding: 0 @gridGap;
+        margin: -1px -1px -1px 0;
+        float: right;
+
+        &:hover, &:focus{
+            background: #064C00;
+        }
+
+        &:active{
+            background: #054100;
+        }
+    }
+}

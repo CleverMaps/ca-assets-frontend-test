@@ -1,0 +1,165 @@
+/* 
+   Created on  : 12.3.2015, 14:35:31
+   Author      : GEe
+   file        : component-announcements
+*/
+
+.component-announcements{
+    margin-right: 8px;
+
+    > a{
+        cursor: pointer;
+        position: relative;
+        display: block;
+        color: #fff;
+        line-height: 48px;
+        text-align: center;
+        height: 48px;
+        width: 44px;
+        padding-right: 4px;
+
+        &:hover{
+            background: @colorGreenPressed;
+            color: #fff;
+        }
+
+        > span{
+            display: block;
+            position: absolute;
+            top: 8px;
+            right: 7px;
+            background-color: @colorRedAlert;
+            border-radius: 100%;
+            color: @colorWhite;
+            font-size: @textSizeSmall;
+            line-height: 16px;
+            text-align: center;
+            height: 16px;
+            width: 16px;
+            .boxDropShadow(0 0 8px, rgba(255, 255, 255, 0.7) );
+        }
+    }
+
+    .component-tooltip{
+        right: -6px!important;
+        top: 48px!important;
+        width: 400px;
+
+        header h1{
+            display: block;
+            padding-left: 44px!important;
+            
+            &.fa-bell::before{
+                position: absolute;
+                top: 0;
+                left: 16px;
+            }
+
+            a{
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: @borderRadius 0 0 0;
+                color: @grayE4;
+                line-height: @gridRowHeight;
+                text-align: center;
+                height: @gridRowHeight;
+                width: @gridRowHeight;
+
+                &:hover{
+                    background-color: @gray28;
+                    color: @grayF6;
+                }
+            }
+        }
+        
+        .component-tooltip-content{
+            padding: 0;
+
+            .scrollable{
+                max-height: 503px;
+                overflow: hidden;
+            }
+        }
+
+        footer{
+            text-align: center;
+            margin-bottom: @gridSmallGap;
+
+            a{
+                float: none;
+                color: @gray70;
+                font-size: @textSizeSmall;
+                height: @lineHeight;
+                line-height: @lineHeight;
+                margin-left: 0;
+
+                &:hover{
+                    color: @gray50;
+                }
+            }
+        }
+    }
+
+    .component-tabulatedList{
+        border-collapse: collapse;
+
+        tr:first-of-type td{
+            border-top: 0;
+        }
+
+        tr:last-of-type td{
+            border-bottom-width: 0!important;
+        }
+        
+        tbody tr:last-of-type a.fa{
+            left: auto;
+        }
+
+        td{
+            border-bottom: 1px solid @grayE4 !important;
+            vertical-align: middle;
+            padding: 10px 0;
+
+            &:first-of-type{
+                color: @gray80;
+                line-height: @lineHeight;
+                width: 44px;
+                text-align: center;
+                vertical-align: top;
+            }
+            
+            &:last-of-type{
+                color: @gray70;
+                font-size: @textSizeSmall;
+                text-align: right;
+                width: 38px;
+                padding: 0 12px 0 8px;
+            }
+
+            .fa-times{
+                .button-icon();
+                display: none;
+                position: absolute;
+                top: 10px;
+                right: 6px;
+
+                &::before{
+                    font-size: @textSizeSmall;
+                }
+            }
+        }
+
+        tr:hover{
+            
+            td:first-of-type::before{
+                display: none;
+            }
+            
+            .fa-times{
+                display: block;
+            }
+        }
+    }
+}

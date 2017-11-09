@@ -1,0 +1,66 @@
+/* 
+   Created on  :  Jul 16, 2014, 8:36:28 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-tabcontroller
+*/
+
+.component-tabcontroller{
+
+    > ul{
+        display: block;
+        height: @lineHeightBasic * 2 + 4;
+
+        li{
+            display: inline-block;
+            float: left;
+            height: @lineHeightBasic * 2 + 4;
+
+            a{
+                text-decoration: none;
+            }
+
+            > a{
+                border-top: 4px solid transparent;
+                color: #fff;
+                cursor: pointer;
+                display: inline-block;
+                line-height: @lineHeightBasic * 2;
+                padding: 0 @gridGap;
+
+                &:hover, &:focus{
+                    background: #AAE491;
+                    border-color: #4EB24E;
+                    color: #282828;
+                }
+
+                 &:active{
+                    background: #8BCA70;
+                    border-color: #42A142;
+                    color: #282828;
+                }
+            }
+
+            &.selected > a{
+                background: #CCFAB8;
+                border-color: #65C865;
+                color: #282828;
+            }
+        }
+    }
+
+    > section{
+        display: none;
+        position: relative;
+
+        &.selected{
+            display: block;
+        }
+
+        .column5{
+            width: (100% / 12) * 5;
+        }
+        .column6{
+            //width: (100% / 12) * 6;
+        }
+    }
+}

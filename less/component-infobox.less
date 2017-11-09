@@ -1,0 +1,160 @@
+/* 
+   Created on  :  14.3.2014, 12:25:33
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-infobox
+*/
+
+.component-infobox{
+    .boxDropShadow();
+    position: absolute;
+    top: 57px;
+    right: 47px;
+    border-radius: @borderRadius;
+    width: 456px;
+    min-width: 240px;
+    z-index: 500;
+
+    > header{
+        .backgroundCarbon();
+        position: relative;
+        border-radius: @borderRadius @borderRadius 0 0;
+        color: @grayB4;
+        height: 56px;
+        padding: 12px;
+
+        &.headerTwoRow{
+            height: 64px;
+
+            a.fa.fa-angle-left{
+                line-height: 64px;
+                height: 64px;
+                cursor: pointer;
+            }
+
+            h1{
+                height: @gridRowHeight;
+
+                .secondLine{
+                    display: block;
+                    color: @grayB4;
+                    font-size: @textSizeSmall;
+                    line-height: 18px;
+                    height: 18px;
+                    overflow: hidden;
+                }
+            }
+
+            .controllers{
+                top: 16px;
+                right: 12px;
+            }
+        }
+
+        &:not(.headerTwoRow) a + h1, a + h1{
+            padding-left: @gridGap;
+        }
+
+        h1{
+            color: @grayF6;
+            font-size: @textSizeBigger;
+            font-weight: 400;
+            line-height: 21px;
+            padding: 0 115px 0 16px;
+        }
+
+        &:not(.headerTwoRow) h1{
+            padding: 6px 92px 0 16px;
+        }
+
+        a.fa{
+            display: inline-block;
+            color: @grayB4;
+            line-height: 32px;
+            text-align: center;
+            height: 32px;
+            width: 32px;
+
+            &:hover{
+                background-color: @blackOpacity20!important;
+                color: @grayF6!important;
+            }
+
+            &.fa-angle-left{
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: @borderRadius 0 0 0;
+                color: @gray80;
+                line-height: 56px;
+                text-align: center;
+                height: 56px;
+                width: 28px;
+
+                &::before{
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .controllers{
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            text-align: right;
+
+            a.fa{
+                border-radius: @borderRadius;
+                cursor: pointer;
+
+                & + a{
+                    margin-left: 4px;
+                }
+
+                &::before{
+                    font-size: @textSizeBigger;
+                }
+            }
+        }
+    }
+
+    &.collapsed{
+        width: auto;
+
+        header{
+            border-radius: @borderRadius;
+        }
+
+        > div{
+            display: none;
+        }
+    }
+
+    .content{
+        .setAppBackground();
+        border-radius: 0 0 @borderRadius @borderRadius;
+        padding: 12px 28px 28px;
+        overflow-y: hidden;
+        position: relative;
+        .localTitle{
+            color: @gray28;
+            font-size: @textSizeBigger;
+            line-height: @textSizeLocalTitle;
+            padding-top: 12px;
+            padding-bottom: 12px;
+
+            &:nth-of-type(n+2){
+                padding-top: @gridRowHeight;
+            }
+        }
+
+        .buttons.alignToCenter{
+            padding-top: @lineHeight;
+            text-align: center;
+            
+            .button-secondary{
+                float: none;
+                margin-left: 0;
+            }
+        }
+    }
+}

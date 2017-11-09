@@ -1,0 +1,57 @@
+/* 
+   Created on  :  May 28, 2014, 5:12:14 PM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-switchOneRow
+*/
+
+.component-switchOneRow(@height: 30px, @initialBackgroundColor : @grayF6, @checkedBackgroundColor : @colorBlue, @initialTextColor : @gray28, @checkedTextColor : @colorWhite, @borderColor : @grayE4, @borderRadius : 3px){
+    float: left;
+    background-color: @initialBackgroundColor;
+    border: 1px solid @borderColor;
+    border-radius: @borderRadius;
+    height: @height;
+    margin-top: 1px;
+
+    input{
+        display: none;
+
+        &:checked + label, .checked + label{
+            background-color: @checkedBackgroundColor;
+            color: @checkedTextColor!important;
+            margin: -1px 0 -1px 1px;
+            padding: 1px 16px;
+
+            &:first-of-type{
+                border-radius: @borderRadius 0 0 @borderRadius;
+                margin-left: -1px;
+                padding-left: 17px;
+            }
+
+            &:last-of-type{
+                border-radius: 0 @borderRadius @borderRadius 0;
+                margin-right: -1px;
+                padding-right: 17px;
+            }
+        }
+    }
+
+    label{
+        cursor: pointer;
+        display: block;
+        float: left;
+        color: @initialTextColor;
+        font-size: @textSizeBasic;
+        line-height: @height;
+        height: @height;
+        width: auto!important;
+        padding: 0 16px;
+
+        &:nth-of-type(n+2){
+            margin-left: 1px;
+
+            &:before{
+                .addVerticalSeparator(@height, 16px);
+            }
+        }
+    }
+}

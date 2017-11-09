@@ -1,0 +1,342 @@
+/* 
+   Created on  :  Jun 12, 2014, 6:01:45 PM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-taskView
+*/
+
+.component-taskView:not(.column6){
+    min-width: 916px;
+    padding: @gridRowHeight;
+
+    > header{
+        .boxDropShadow(0px 1px 4px, rgba(0, 0, 0, 0.43) );
+        background-color: #288128;
+        height: 128px;
+        margin: -@gridRowHeight -@gridRowHeight @lineHeight  -@gridRowHeight;
+        padding: (@lineHeightBasic * 3) @gridRowHeight 0 @gridRowHeight;
+        position: relative;
+
+        .component-itemDetail-headerContent{
+            position: relative;
+            display: block;
+            height: 100%;
+
+            > h1, > div:not(.component-tooltipContainer) > h1{
+                float: left;
+                position: relative;
+                color: #fff;
+                font-size: 28px;
+                font-weight: 300;
+                line-height: 48px;
+                padding-right: @gridGap;
+
+                &.titleWithSubtitle{
+                    font-size: 21px;
+                    line-height: 24px;
+                    margin-top: 3px;
+                }
+
+                .small{
+                    font-size: 13px;
+                }
+
+                .subtitle{
+                    display: block;
+                    font-size: 13px;
+                    line-height: @textSizeBigger;
+                    position: relative;
+                    margin-top: 2px;
+
+                    &.fa-exclamation-triangle{
+                        &::before{
+                            display: inline-block;
+                            color: @colorRedAlert;
+                            font-family: @iconFont;
+                            font-size: @iconSizeBasic;
+                            margin-right: @gridSmallGap;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
+                .addedTooltip{
+                    color: #fff;
+                    text-decoration: underline dashed #fff;
+                    -webkit-text-decoration: underline dashed #fff;
+                }
+
+                .item-record-state{
+                    font-family: @textFont;
+                    position: absolute;
+                    left: 0px;
+                    top: 26px;
+                    font-weight: 400;
+                    line-height: @lineHeightBasic;
+                }
+
+                + a, + .component-dropdownMenu-click > a{
+                    background: #0A467B;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    bottom: -42px / 2;
+                    color: #fff;
+                    font-size: @textSizeLocalTitle;
+                    left: 16px;
+                    line-height: 38px;
+                    margin: 0;
+                    position: absolute;
+                    text-align: center;
+                    height: 42px;
+                    width: 42px;
+                    z-index: 15;
+
+                    &:hover, &:focus{
+                        background-color: #063864;
+                    }
+
+                    &:active, &.opened{
+                        background-color: #002C50;
+                    }
+
+                    &::before{
+                        position: relative;
+                        top: -3px;
+                    }
+
+                    &.fa-chevron-left::before{
+                        left: -1px;
+                    }
+                }
+
+                + .component-dropdownMenu-click{
+                    bottom: -42px / 2;
+                    height: 42px;
+                    left: 16px;
+                    position: absolute;
+                    width: 42px;
+
+                    > a.fa{
+                        bottom: 0;
+                        color: #fff;
+                        font-size: @textSizeLocalTitle;
+                        left: 0;
+                        line-height: 38px;
+                        padding: 0 !important;
+                        position: relative;
+                        box-shadow: none;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+
+                        &::after, &::before{
+                            top: -2px;
+                            position: relative;
+                        }
+                        &::after{
+                            color: #fff;
+                            margin-left: -2px;
+                            padding-left: 0;
+                        }
+                    }
+
+                    &.popupBottomLeft > .component-dropdownMenu-popupContent{
+                        top: 42px / 2 - 5;
+                        left: 1px;
+                        padding-top: 30px;
+                        z-index: 10;
+                    }
+                }
+            }
+
+            .component-tabcontroller{
+                position: absolute;
+                bottom: 0;
+                left: 65px;
+
+                &.withoutLeftPadd{
+                    left: 0;
+                }
+
+                ul{
+                    border: 0;
+                }
+            }
+
+            .searchResult-sum{
+                clear: both;
+                color: #fff;
+                font-size: @textSizeSmall;
+                height: @lineHeightBasic * 2;
+                line-height: @lineHeightBasic * 2;
+                padding-left: @gridGap - 4px;
+                    
+                .component-dropdownMenu-popupContent{
+                    min-width: 105px;
+                    color: @gray50;
+
+                    .component-menuListWithIcons{
+                        min-width: 105px;
+
+                        li{
+                            white-space: nowrap;
+                        }
+                    }
+                }
+
+                > .left{
+                    color: #fff;
+                    float: left;
+                    font-size: @textSizeSmall;
+                    line-height: @lineHeightBasic * 2;
+
+                    strong{
+                        color: #fff;
+                        font-weight: 600;
+                        font-size: @textSizeSmall;
+                    }
+                    &+div:nth-of-type(2){
+                        margin-left: 5px;
+                    }
+                }
+
+                > .right{
+                    float: right;
+                    line-height: @lineHeightBasic * 2 - 2;
+                    height: 32px;
+                    padding-top: 2px;
+                    vertical-align: top;
+
+                    .component-dropdownMenu{
+                        padding-top: 2px;
+
+                        > a{
+                            color: #fff;
+                            font-size: 11px;
+                            height: 30px;
+                            line-height: 23px;
+                            vertical-align: top;
+
+                            &::after{
+                                color: #fff;
+                                top: 1px;
+                                position: relative;
+                            }
+                        }
+
+                        &:hover{
+                            > a{
+                                color: @gray50;
+
+                                &::after{
+                                    color: @gray50;
+                                }
+                            }
+                        }
+                    }
+
+                    a.fa-download{
+                        color: #fff;
+                        display: inline-block;
+                        line-height: 28px;
+                        text-align: center;
+                        height: 28px;
+                        width: 28px;
+                        position: relative;
+                        margin: 0 @gridSmallGap;
+                        vertical-align: top;
+                        top: 1px;
+
+                        &:hover{
+                            background-color: @listItemHoverBackgroundColor;
+                            border-radius: @borderRadius;
+                        }
+                    }
+                }
+            }
+
+            .component-localMenu{
+                
+                .button-secondary{
+                    color: #fff;
+
+                    &:hover, &:focus{
+                        color: #fff;
+                    }
+
+                    &:active{
+                        color: #fff;
+                    }
+
+                    &:hover, &:focus{
+                        background-color: @blackOpacity10;
+                    }
+
+                    &:active{
+                        background-color: @blackOpacity20;
+                    }
+                }
+
+                .button-edit{
+                    &::before{
+                        color: #fff;
+                    }
+
+                    &:hover::before{
+                        color: #fff;
+                    }
+
+                    &:hover, &:focus{
+                        background-color: @blackOpacity10;
+                    }
+
+                    &:active{
+                        background-color: @blackOpacity20;
+                    }
+                }
+            }
+        }
+
+        #searchResult-list{
+            padding: 0 @gridRowHeight;
+        }
+        
+        .component-dropdownMenu{
+            
+            &:hover, &:focus{
+                .component-dropdownMenu.opened();
+            }
+
+            &.noHoverPopupContent:hover .component-dropdownMenu-popupContent{
+                display: none;
+            }
+
+            &.opened.noHoverPopupContent:hover .component-dropdownMenu-popupContent{
+                display: block;
+            }
+        }
+    }
+
+    .bottomButtonRow{
+        padding: @gridGap (@gridGap * 2);
+        text-align: right;
+    }
+}
+
+@media all and (min-width: 1200px){
+
+    .component-taskView{
+
+        header h1 .subtitleContainer{
+            width: 525px;
+        }
+    } 
+}
+
+@media all and (min-width: 1400px){
+
+    .component-taskView{
+
+        header h1 .subtitleContainer{
+            width: 750px;
+        }
+    }
+}

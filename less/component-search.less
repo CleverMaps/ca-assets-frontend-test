@@ -1,0 +1,362 @@
+/* 
+   Created on  :  14.3.2014, 12:20:37
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-search
+*/
+
+.component-search{
+    position: relative;
+    border-radius: @borderRadius * 2;
+    z-index: 1003;
+
+    &.popupBottom{
+
+        > .component-searchField&:focus{
+            border-color: @colorBlue;
+        }
+
+        > .filter-searchResultsContainer{
+            border-radius: 0 0 @borderRadius @borderRadius;
+        }
+    }
+
+    &.popupBottomRight{
+
+        > .filter-searchResultsContainer{
+            left: auto;
+            right: 0;
+            border-radius: @borderRadius 0 @borderRadius @borderRadius;
+        }
+    }
+
+    &.opened{
+
+        .component-searchField{
+            border-radius: @borderRadius @borderRadius 0 0;
+        }
+
+        .filter-searchResultsContainer{
+            .boxDropShadow(0 6px 5px 0);
+            display: block;
+        }
+
+        &.popupBottom > .component-searchField{
+            border-radius: @borderRadius @borderRadius 0 0;
+        }
+    }
+
+    &.focused{
+        z-index: 2000;
+    }
+
+    .filter-searchResultsContainer{
+        display: none;
+        position: absolute;
+        top: 33px;
+        left: 0;
+        background-color: @colorWhite;
+        border: 1px solid @grayE4;
+        border-radius: 0 0 @borderRadius  @borderRadius;
+        width: 100%;
+        padding: 0 @gridGap 12px 0;
+
+        .component-loadingBox{
+            margin-top: @lineHeight;
+        }
+
+        .filter-searchResultsHeader{
+            margin-right: -@gridGap;
+            padding-left: @gridGap;
+
+            .filter-searchResultsCount{
+                height: @lineHeight;
+                line-height: @lineHeight;
+                padding: 0 @gridGap 0 0;
+            }
+        }
+
+        .component-tabulatedList{
+
+            tr td:first-of-type{
+                position: relative;
+                padding-left: @gridGap;
+                
+                &::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -1px;
+                    left: 0;
+                    background-color: @colorWhite;
+                    border: 1px solid @colorWhite;
+                    width: @gridGap;
+                    height: 100%;
+                }
+            }
+            
+            tr:hover{
+                
+                td:first-of-type::before{
+                    display: none;
+                }
+                
+                + tr td:first-of-type::before{
+                    display: none;
+                }
+            }
+        }
+
+        ul li{
+            position: relative;
+
+            &:hover{
+                background-color: @grayFA;
+            }
+
+            > label::before, > a::before{
+                height: 100%;
+            }
+        }
+
+        .secondLine{
+            display: block;
+            line-height: 13px;
+            padding-bottom: 4px;
+        }
+    }
+
+    &.results-addToList, &.results-searchForDetails, &.results-showDetails{
+
+        .filter-searchResultsContainer{
+
+            .component-tabulatedList tr{
+
+                &:hover td:last-of-type{
+
+                    &::before, &::after{
+                        color: @gray28;
+                    }
+                }
+
+                td:last-of-type{
+                    position: relative;
+                    padding-right: @gridGap * 2;
+                }
+            }
+        }
+
+        ul li{
+
+            &:hover::before{
+                color: @gray28;
+            }
+
+            &::before{
+                cursor: pointer;
+                position: absolute;
+                right: 16px;
+                top: 14px;
+                color: @gray80;
+                font-family: @iconFont;
+                font-size: @iconSizeBasic;
+                text-align: center;
+            }
+
+            a{
+                padding-right: @gridGap;
+            }
+        }
+    }
+
+    &.results-addToList .filter-searchResultsContainer{
+
+        .component-tabulatedList{
+
+            tr:hover td:last-of-type::after{
+                background-color: @grayFA;
+                color: @gray50;
+            }
+
+            tr td:last-of-type{
+
+                &::before, &::after{
+                    position: absolute;
+                    color: @gray80;
+                    font-family: @iconFont;
+                    font-size: @iconSizeBasic;
+                    text-align: center;
+                }
+
+                &::before{
+                    content: "\f03a";
+                    right: 15px;
+                    top: 8px;
+                }
+
+                &::after{
+                    content: "\f067";
+                    right: 8px;
+                    top: 17px;
+                    background-color: @colorWhite;
+                    border-radius: 100%;
+                    line-height: 18px;
+                    height: 18px;
+                    width: 18px;
+                }
+            }
+        }
+
+        ul li{
+
+            &:hover{
+
+                a::after{
+                    background-color: @grayFA;
+                    color: @gray50;
+                }
+            }
+
+            &::before{
+                content: "\f03a";
+            }
+
+            a::after{
+                content: "\f067";
+                position: absolute;
+                right: 4px;
+                top: 20px;
+                background-color: @colorWhite;
+                border-radius: 100%;
+                color: @gray80;
+                font-family: @iconFont;
+                font-size: @iconSizeBasic;
+                line-height: 18px;
+                text-align: center;
+                height: 18px;
+                width: 18px;
+            }
+        }
+    }
+
+    &.results-searchForDetails .filter-searchResultsContainer{
+
+        .component-tabulatedList tr td:last-of-type::before{
+            content: "\f002";
+            position: absolute;
+            right: 16px;
+            top: 14px;
+            color: @gray80;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            text-align: center;
+        }
+
+        ul li::before{
+            content: "\f002";
+        }
+    }
+
+    &.results-showDetails .filter-searchResultsContainer{
+
+        .component-tabulatedList tr td:last-of-type::before{
+            content: "\f054";
+            position: absolute;
+            right: 16px;
+            top: 14px;
+            color: @gray80;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            text-align: center;
+        }
+
+        ul li::before{
+            content: "\f054";
+        }
+    }
+}
+
+.filter-searchResultsContainer{
+
+    .filter-searchResultsHeader{
+        position: relative;
+        background-color: @grayFA;
+        margin-bottom: 4px;
+        padding: @lineHeight 0 4px;
+
+        .filter-searchResultsHeaderButtons{
+            position: absolute;
+            right: 24px;
+            top: 65px;
+            line-height: @lineHeight;
+            height: @lineHeight;
+
+            .fa-minus{
+                .button-icon(28px, 28px);
+                position: relative;
+                top: 2px;
+            }
+        }
+
+        .filter-searchResultsCount{
+            line-height: @lineHeight;
+            height: @lineHeight;
+            padding: 0 @gridGap;
+
+            strong{
+                font-size: @textSizeSmall;
+            }
+        }
+
+        .component-searchField{
+            display: block;
+            margin: 0 @gridGap;
+
+            input[type="text"] {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+
+    .filter-searchResultsCount{
+        color: @gray80;
+        font-size: @textSizeSmall;
+
+        strong{
+            color: @gray28;
+            font-weight: 600;
+        }
+    }
+
+    .filter-searchResults{
+        line-height: 16px;
+        max-height: 320px;
+
+        span, address{
+            color: @gray70;
+            font-size: @textSizeSmall;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        a{
+            cursor: pointer;
+            display: block;
+            color: @gray28;
+            text-decoration: none;
+            padding: 5px 8px 5px 0;
+        }
+
+        .component-tabulatedList tbody tr:nth-of-type(1) td{
+            border-top: 0;
+        }
+        
+        > p:first-of-type{
+            padding-top: @gridGap;
+        }
+
+        p{
+            padding: @gridSmallGap @gridGap;
+        }
+    }
+}

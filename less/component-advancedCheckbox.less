@@ -1,0 +1,45 @@
+/* 
+   Created on  :  28.4.2015, 13:15:22
+   Author      :  GEe
+   File        :  component-advancedCheckbox
+*/
+
+.component-advancedCheckbox{
+    clear: both;
+    line-height: @lineHeight + 2px;
+    height: @lineHeight + 2px;
+    padding: 1px 0;
+
+    &.switchColumns{
+
+        .component-advancedCheckbox-label{
+            float: right;
+        }
+
+        .component-advancedCheckbox-value{
+            float: left;
+        }
+    }
+
+    .component-advancedCheckbox-label{
+        float: left;
+        line-height: @lineHeight;
+        padding-right: 8px;
+    }
+
+    .component-advancedCheckbox-value{
+        float: right;
+
+        input{
+            float: left;
+
+            &.dateType{
+                width: 112px!important;
+            }
+        }
+
+        select{
+            margin: 0;
+        }
+    }
+}

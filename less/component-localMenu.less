@@ -1,0 +1,118 @@
+/* 
+   Created on  :  19.3.2015, 9:01:35
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-localMenu
+*/
+
+.component-localMenu{
+    position: absolute;
+    right: @gridSmallGap;
+    top: 0px;
+
+    > *{
+        float: left;
+    }
+
+    .button-primary{
+        background: #085C00;
+        line-height: @buttonHeight - 2px;
+
+        &:hover, &:focus{
+            background: #064C00;
+        }
+
+        &:active{
+            background: #054100;
+        }
+    }
+
+    .component-dropdownMenu{
+
+        > a::before, a::after{
+            color: #fff;
+        }
+
+        > a:hover::before{
+            color: #fff;
+        }
+
+        &:hover > a::before, &:hover > a::after{
+            color: @gray28;
+        }
+
+        > a, > label{
+            line-height: @gridRowHeight;
+            height: @gridRowHeight;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            top: @gridRowHeight - 3px;
+        }
+
+        .component-menuListWithIcons li{
+            white-space: nowrap;
+        }
+
+        .component-tabulatedList{
+            empty-cells: show;
+            white-space: nowrap;
+
+            th{
+                color: @gray80;
+                font-size: @textSizeSmall;
+                line-height: @lineHeightBasic;
+            }
+
+            tr.selected td{
+                color: @gray28;
+                background-color: @grayFA;
+            }
+
+            td{
+                color: @gray70;
+                line-height: @lineHeight;
+                height: @lineHeight;
+
+                &:hover{
+                    color: @gray28;
+                }
+
+                &:first-of-type{
+                    border-top: 0;
+                    text-align: center;
+                    min-width: @gridRowHeight;
+                    width: @gridRowHeight;
+                    
+                    &::before{
+                        display: none;
+                    }
+
+                    div::before{
+                        line-height: @buttonHeight + 1px;
+                        height: @buttonHeight + 1px;
+                    }
+                }
+
+                &:nth-of-type(2){
+                    min-width: 200px;
+                    padding-right: @gridGap;
+
+                    &.actualVersion{
+                        line-height: @textSizeBasic;
+                        padding-top: 4px;
+
+                        span{
+                            display: block;
+                        }
+                    }
+                }
+
+                &:last-of-type{
+                    font-size: @textSizeSmall;
+                    text-align: right;
+                    padding-right: @gridSmallGap;
+                }
+            }
+        }
+    }   
+}

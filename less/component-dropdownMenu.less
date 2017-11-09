@@ -1,0 +1,416 @@
+/* 
+   Created on  :  Jun 13, 2014, 7:31:39 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-dropdownMenu
+*/
+
+.component-dropdownMenu{
+    display: inline-block;
+    position: relative;
+    line-height: @lineHeight;
+    height: @lineHeight;
+    z-index: 1002;
+
+    &.opened{
+        z-index: 2000;
+
+        > a, > label{
+            .boxDropShadow(0 6px 5px 0);
+            color: @gray28;
+            background-color: @colorWhite;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            display: block;
+        }
+    }
+
+    &.formElement{
+
+        > ul, > .component-dropdownMenu-popupContent{
+
+            .component-dropdownMenu-popupContent{
+                padding-right: 12px;
+            }
+        }
+    }
+
+    &.multiselectFilter{
+        > a{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 27px !important;
+
+            &::after{
+                position: absolute;
+                right: 12px;
+            }
+        }
+
+        &#parcel-multiselect-filter > a{
+            width: 100px;
+        }
+
+        &#subject-multiselect-filter > a{
+            width: 150px;
+        }
+
+        &#lv-multiselect-filter > a{
+            width: 145px;
+        }
+
+        &.opened > .component-dropdownMenu-popupContent{
+            display: block;
+        }
+
+        .filter-searchResultsHeader{
+            .listWithLineDividers{
+                margin-right: 20px;
+
+                li:hover{
+                    background: @grayF6;
+                }
+
+                .withLinkToDetail input[type="checkbox"] + label::after{
+                    right: 46px;
+                }
+
+                .fa-chevron-right-after{
+                    border-radius: @borderRadius;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-top: -15px;
+                    padding: 0;
+                    position: absolute;
+                    right: 12px;
+                    text-align: center;
+                    top: 50%;
+                    width: 30px;
+                    color: @gray80;
+
+                    &::before{
+                        display: none;
+                    }
+
+                    &:hover{
+                        background: @grayEC;
+                        color: @gray28;
+                    }
+                }
+            }
+        }
+
+        .filter-searchResultsTable{
+            padding-left: 20px;
+
+            .component-tabulatedList tbody{
+                tr:hover td:first-of-type::before{
+                    width: 20px;
+                    margin-left: -20px;
+                }
+
+                .fa-plus{
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -8px;
+                    right: 50px;
+
+                    &::before{
+                        color: @grayB4;
+                    }
+                }
+
+                a.fa-chevron-right{
+                    border-radius: @borderRadius;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-top: -15px;
+                    padding: 0;
+                    position: absolute;
+                    right: 12px;
+                    text-align: center;
+                    top: 50%;
+                    width: 30px;
+                    left: auto;
+                    color: @gray80;
+
+                    &:hover{
+                        background: @grayEC;
+                        color: @gray28;
+                    }
+                }
+            }
+        }
+
+        .listWithLineDividers li.fa-plus{
+            &::before{
+                position: absolute;
+                top: 50%;
+                margin-top: -7px;
+                right: 12px;
+                color: @grayB4;
+            }
+        }
+
+    }
+
+    > a, > label{
+        cursor: pointer;
+        position: relative;
+        color: @gray50;
+        font-family: @textFont;
+        font-weight: 600;
+        line-height: @lineHeight;
+        padding: 0 12px 0 16px!important;
+
+        &::after{
+            color: @gray80;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            font-weight: 400;
+            padding-left: @gridSmallGap;
+        }
+
+        &::before{
+            color: @gray80;
+        }
+    }
+
+    > span{
+        position: absolute;
+        top: -11px;
+        right: 6px;
+        background-color: @colorGreen;
+        border-radius: @borderRadius;
+        color: @colorWhite;
+        font-size: @textSizeSmall;
+        font-weight: 600;
+        line-height: @textSizeBigger;
+        padding: 2px 7px;
+    }
+
+    > ul, > .component-dropdownMenu-popupContent{
+        .boxDropShadow(0 6px 5px 0);
+        display: none;
+        position: absolute;
+        background-color: @colorWhite;
+        padding: @gridSmallGap @gridGap (@gridSmallGap * 1.5) 0;
+        
+        li{
+            
+            &.twoLines{
+
+                input[type="checkbox"] + label:not(.showAsCheckbox){
+                    box-sizing: content-box;
+                    color: @gray50;
+                    line-height: @lineHeightBasic;
+
+                    &:hover{
+                        color: @gray28;
+                    }
+
+                    &::after{
+                        margin-top: -7px;
+                    }
+
+                    @media screen and (-webkit-min-device-pixel-ratio:0) {
+                        &::after{
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+            
+            &:hover{
+                color: @gray28;
+                
+                > input[type="checkbox"] + label:not(.showAsCheckbox)::after{
+                    color: @gray28;
+                }
+            }
+            
+            label{
+                position: static;
+            }
+        }
+        
+        label &.default{
+            font-weight: 700;
+        }
+    }
+
+    > .component-dropdownMenu-popupContent{
+
+        .filter-searchResultsContainer();
+
+        input[type="date"]{
+            width: 74px;
+            padding: 4px 28px 4px 8px;
+
+            + div.fa.fa-calendar-o{
+                position: absolute;
+                top: 22px;
+                right: 29px;
+                font-size: @textSizeBasic + 1;
+            }
+        }
+    }
+
+    &.popupBottomLeft, &.popupBottomRight{
+
+        > a, > label{
+            border-radius: @borderRadius @borderRadius 0 0;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            top: @lineHeight;
+        }
+    }
+
+    &.popupBottomLeft{
+
+        > ul, > .component-dropdownMenu-popupContent{
+            left: 0;
+            border-radius: 0 @borderRadius @borderRadius @borderRadius;
+        }
+    }
+
+    &.popupBottomRight{
+
+        > ul, > .component-dropdownMenu-popupContent{
+            right: 0;
+            border-radius: @borderRadius 0 @borderRadius @borderRadius;
+        }
+    }
+
+    &.popupTopRight, &.popupTopLeft{
+
+        > a, > label{
+            border-radius: 0 0 @borderRadius @borderRadius;
+            z-index: 2000;
+        }
+
+        > ul, > .component-dropdownMenu-popupContent{
+            bottom: @lineHeight;
+            padding-top: 16px;
+        }
+    }
+
+    &.popupTopRight{
+
+        > ul, > .component-dropdownMenu-popupContent{
+            right: 0;
+            border-radius: @borderRadius @borderRadius 0 @borderRadius;
+        }
+    }
+
+    &.popupTopLeft{
+
+        > ul, > .component-dropdownMenu-popupContent{
+            left: 0;
+            border-radius: @borderRadius @borderRadius @borderRadius 0;
+        }
+    }
+
+    &.contract-acreageExemptFromTax{
+        > .component-dropdownMenu-popupContent{
+            line-height: @lineHeightBasic;
+            min-width: 370px;
+            padding: @gridGap;
+            
+            table{
+                display: none;
+
+                &.tableResults{
+                    display: block;
+
+                    th.colYear{
+                        width: 80px;
+                    }
+
+                    tbody tr:first-child td{
+                        border: none;
+                    }
+                }
+
+                th{
+                    font-size: @textSizeSmall;
+                    line-height: @lineHeightBasic;
+                    padding-top: 0;
+
+                    &.colSelect{
+                        width: 160px;
+                    }
+                    
+                    &.colInput{
+                        width: 100px;
+                    }
+                    
+                    &.colYear{
+                        width: 60px;
+                    }
+
+                    &.component-tooltipContainer{
+                        .component-tooltip{
+                            font-size: @textSizeBasic;
+
+                            &.positionedTopLeft{
+                                margin-bottom: 10px;
+                                width: 265px;
+                            }
+                        }
+
+                         &:hover .component-tooltip{
+                            display: block;
+                        }
+                    }
+                }
+
+                th,td{
+                    vertical-align: top;
+                }
+
+                input, select{
+                    width: 100%;
+                }
+
+                input.entry-valueMoney[type="text"]{
+                    width: 110px !important;
+                }
+
+                .selectParagraph{
+                    position: relative;
+                }
+
+                .modeEdit &{
+                    display: block;
+                    &.tableResults{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .filter-searchResultsHeader{
+        min-width: 360px;
+        margin: -@gridSmallGap -@gridGap 4px 0;
+    }
+
+    > input[type="text"]{
+        border: 0;
+        width: 130px;
+    }
+
+    input[type="checkbox"] + label::after{
+        position: absolute;
+        right: @gridSmallGap;
+        top: 4px;
+    }
+
+    li, label{
+        .disableTextSelection();
+        cursor: pointer;
+    }
+}

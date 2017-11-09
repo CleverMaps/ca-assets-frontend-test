@@ -1,0 +1,1082 @@
+/* 
+   Created on  :  Jun 12, 2014, 9:47:37 PM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  task-contracts
+*/
+.component-tabulatedList.contracts{
+
+    td{
+        line-height: @textSizeBasic;
+
+        span{
+            color: @gray70;
+            font-size: @textSizeSmall;
+
+            span{
+                color: @gray50;
+            }
+        }
+    }
+
+    th:last-of-type{
+        padding-left: 16px;
+    }
+
+    td:last-of-type{
+        width: 104px;
+        padding-left: 16px;
+    }
+
+    th.alignToRight{
+        padding-left: 10px;
+    }
+
+    td.alignToRight{
+        text-align: right;
+        width: 100px;
+        padding-right: @gridGap;
+    }
+
+    td.contractNumber{
+        width: 128px;
+    }
+}
+
+#component-itemDetail.contractDetail{
+
+    #ZakladniInformace{
+
+        label.component-toggleAdvanced{
+            .calculateGridColumnSize(5);
+            left: auto;
+            right: 0;
+
+            .toggleMessage{
+                width: 240px;
+            }
+
+            .switcher{
+                right: 40px;
+            }
+
+            + label.component-toggleAdvanced{
+                margin-top: 4px;
+            }
+
+            &.contract-parcelsCanRevalueSwitcher{
+
+                .toggleMessage{
+                    line-height: @lineHeightBasic;
+                }
+
+                .switcher{
+                    top: 4px;
+                }
+            }
+        }
+        
+        label.documents span.toggleMessage {
+            width: 300px;
+        }
+        
+        label.documents .switcher {
+            right: 5px;
+        }
+
+        select{
+
+            &[name="contract-template"], &[name="contract-indefinite"]{
+                padding-top: 1px;
+                padding-right: 0;
+            }
+
+            &[name="contract-indefinite"]{
+                .calculateGridColumnSize(4);
+            }
+
+            &[name="contract-selectAddToApendix"]{
+                .calculateGridColumnSize(6);
+                margin-bottom: 1px;
+            }
+
+            + span{
+                float: left;
+                padding-top: 1px;
+            }
+        } 
+
+        input{
+            text-align: right;
+
+            + span.itemUnit{
+                float: left;
+                margin: 1px 0 0 -32px;
+
+                .description{
+                    padding-right: 16px;
+                }
+            }
+
+            &[name="contract-counterpartyNumber"]{
+                text-align: left;
+                .calculateGridColumnSize(4);
+            }
+        }
+
+        textarea{
+
+            &[name="contract-addToApendix"], &[name="contract-notes"]{
+                height: 152px;
+                padding: 4px 8px;
+            }
+
+            &[name="contract-addToApendix"]{
+                width: 100%;
+                max-width: 460px;
+            }
+
+            &[name="contract-notes"]{
+                width: 100%;
+            }
+        }
+
+        .contract-noticePeriod-startAt ul{
+            width: 136px;
+        }
+
+        .contract-noticeSubmittedTo ul{
+            width: 320px;
+        }
+
+        .column5{
+
+            fieldset .component-search{
+                .calculateGridColumnSize(2);
+                position: absolute;
+                right: 0;
+                top: -@gridRowHeight;
+
+                &.focused{
+                    width: 100%;
+
+                    input[type="text"]{
+                        border-left-color: @colorBlue!important;
+                        width: 320px;
+                    }
+
+                    .filter-searchResultsContainer{
+                        border-top-color: @colorBlue;
+                    }
+                }
+
+                &:not(.focused) .component-searchField{
+
+                    .component-dropdownMenu-click{
+                        float: left;
+                        display: none;
+
+                        label{
+                            line-height: @lineHeight + @gridSmallGap;
+                            height: @lineHeight + @gridSmallGap;
+                        }
+
+                        + input[type="text"]{
+                            border-left-width: 0;
+                        }
+                    }
+
+                    input[type="text"]{
+                        width: 136px;
+                        margin-left: 0;
+                    }
+                }
+
+                .component-searchField{
+                    border-left-width: 3px;
+                }
+
+            }
+
+            ul{
+                padding-top: 8px;
+            }
+
+            a.contract-name{
+                cursor: pointer;
+                color: @gray28;
+                font-weight: 600;
+                padding-right: @gridGap;
+                text-decoration: underline;
+
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+            .component-gridBlock{
+                float: none;
+                padding-top: 9px;
+                legend{
+                    margin-top: -7px;
+                }
+            }
+
+            .listOfRadiobuttons label{
+                width: 120px;
+            }
+
+            .lessor{
+                line-height: 16px;
+
+                th{
+                    display: none;
+                }
+
+                tbody tr:first-of-type td{
+                    border-top: 0;
+                }
+
+                .secondLine{
+                    display: block;
+                    float: none;
+                    margin: -2px 0 2px;
+                }
+            }
+
+            .paddingTopContact{
+                padding-top: 12px;
+            }
+
+            .component-localMenu{
+                top: -(@lineHeight + 4px);
+
+                .button-primary{
+                    line-height: @buttonHeight;
+                }
+
+                .button-edit{
+                    line-height: @buttonHeight;
+                    height: @buttonHeight;
+                    width: @buttonHeight;
+                }
+            }
+        }
+
+        .component-tabulatedList{
+            line-height: 26px;
+
+            th:nth-of-type(3), th:nth-of-type(4), th:nth-of-type(5), th:nth-of-type(6), th:nth-of-type(7){
+                text-align: center;
+            }
+
+            th:nth-of-type(6){
+                position: relative;
+            }
+
+            td:nth-of-type(4){
+                width: @gridBasicDimension;
+                text-align: right;
+            }
+            
+            td:nth-of-type(3) {
+                width: 120px;
+                text-align: right;
+            }
+
+            td:nth-of-type(5){
+                width: 120px;
+                text-align: right;
+            }
+
+            td:nth-of-type(6), td:nth-of-type(7){
+                text-align: center;
+                width: 48px;
+                vertical-align: middle;
+            }
+
+            td > span{
+                display: inline-block;
+                padding: 1px 0 0 1px;
+            }
+
+        }
+    }
+
+    #Parcely{
+
+        .component-tabulatedList:not(.contractParcels):first-of-type{
+
+            thead{
+                display: none;
+            }
+
+            tr:first-of-type td{
+                border-top: 0;
+            }
+        }
+
+        #small-map cuzk-map{
+            height: 458px;
+        }
+
+        fieldset{
+            position: relative;
+
+            .component-search{
+                position: absolute;
+                right: 0;
+                margin-top: -36px;
+            }
+        }
+
+        .contract-parcel-extendedSize{
+            .calculateGridColumnSize(7.25);
+        }
+
+        .mapContainer{
+            .calculateGridBlockLeftDistance(6.75);
+            float: none;
+            height: 592px!important;
+            width: auto;
+            padding-top: 96px!important;
+        }
+
+        .contract-parcel-collapsedSize{
+            .calculateGridBlockRightDistance(6.25);
+            float: none;
+            width: auto;
+        }
+
+        .parcelInformationContainer{
+            .calculateGridColumnSize(6.75);
+            position: absolute;
+            right: 0;
+            top: 8px;
+            height: 458px!important;
+            padding: 0 0 @gridSmallGap;
+
+            .component-expandableContainer .component-tooltip:not(.tooltip-rentedAcreage){
+                width: 372px;
+            }
+        }
+
+        .parcelInformationContainer:not(#small-map){
+            background-color: @grayF6;
+            height: 505px!important;
+            padding: 0 @gridGap @gridSmallGap;
+
+            > h2{
+                color: @gray28;
+                font-size: @textSizeBigger;
+                padding-top: @gridSmallGap;
+                height: @gridRowHeight;
+
+                .fa{
+                    color: @colorRedAlert;
+                    margin-right: @gridSmallGap;
+                }
+            }
+
+            > .scrollable{
+                max-height: 448px;
+            }
+
+            .component-expandableContainer{
+                clear: both;
+                float: left;
+                width: 100%;
+                padding-right: @gridGap;
+
+                &:not(.opened){
+                    height: @lineHeight;
+                }
+
+                &:first-of-type{
+                    margin-top: @lineHeight;
+                }
+            }
+
+            .component-expandableContainer-content{
+
+                .inMyBlocks{
+                    height: 60px;
+                    width: 152px;
+                    padding-top: @gridRowHeight;
+                    margin-left: @gridSmallGap;
+                }
+            }
+
+            .contract-parcel-note{
+                clear: both;
+                padding: @gridRowHeight 0 @gridSmallGap;
+
+                h1{
+                    color: @gray50;
+                    font-size: @textSizeBigger;
+                    font-weight: 300;
+                    line-height: @lineHeight;
+                    height: @lineHeight;
+                }
+
+                div{
+                    padding-top: 0;
+                }
+
+                label{
+                    display: none;
+                }
+            }
+
+            .component-expandableContainer.opened + .contract-parcel-note{
+                padding-top: 0;
+            }
+        }
+
+        .column4{
+            position: relative;
+        }
+
+        input[name="searchFor"]{
+            width: 300px;
+        }
+
+        .button-icon.fa-refresh{
+            cursor: pointer;
+            position: absolute;
+            left: 180px;
+            top: -(@lineHeight + 6px);
+            color: @gray70;
+
+            &:hover, &:focus{
+                color: @gray50;
+            }
+        }
+
+        .contractParcelsContainer{
+            border-bottom: 1px solid @grayEC;
+            height: 496px;
+        }
+
+        .component-tabulatedList.contractParcels{
+
+            tr.selected .fa-gear{
+                background-color: @blackOpacity7;
+                color: @gray28;
+            }
+
+            tr:first-of-type td{
+                border-top: 0;
+            }
+
+            td{
+                line-height: @textSizeBasic;
+
+                &:first-of-type {
+                    width: 120px;
+                }
+
+                &.parcel-params span{
+                    float: none;
+                }
+
+                span{
+                    color: @gray80;
+                    font-size: @textSizeSmall;
+                }
+
+                span.tooltipInnerText {
+                    color: @colorWhite;
+                }
+            }
+
+            th:nth-of-type(6){
+                position: relative;
+            }
+
+            td:first-of-type div{
+                color: @colorRedAlert;
+            }
+
+            td:nth-of-type(6){
+                padding-right: 4px;
+            }
+
+            th:last-of-type a.fa{
+                left: -1px;
+            }
+        }
+
+        #parcelsSumContainer{
+            position: relative;
+            padding-bottom: 8px;
+            margin-bottom: @gridBasicDimension;
+
+            &:hover{
+                background-color: @listItemHoverBackgroundColor;
+            }
+
+            a{
+                text-decoration: none;
+            }
+
+            a:first-of-type{
+                display: block;
+                text-align: right;
+                padding: 8px 88px 0 0;
+                cursor: pointer;
+            }
+
+            a:last-of-type{
+                .button-icon(36px);
+                position: absolute;
+                right: 47px;
+                top: 0;
+            }
+
+            strong{
+                font-weight: 600;
+                padding-left: 8px;
+            }
+        }
+
+        > .col-7 legend .fa-warning{
+            position: relative;
+            top: -1px;
+            color: @colorRedAlert;
+            margin: 0 6px 0 -20px; 
+        }
+
+        .column7 fieldset:last-of-type{
+            min-height: 248px;
+            padding-bottom: @gridRowHeight;
+        }
+
+        .parcelDetail-parcelCanceled{
+            background-color: @grayE4;
+            border: 1px solid @grayB4;
+            height: 600px;
+            padding: 88px 0 0 112px;
+            margin-top: 8px;
+
+            &.withGeometry{
+                padding-top: 32px;
+                height: 136px;
+
+                p{
+                    padding-top: @gridGap;
+                }
+            }
+
+            h1{
+                color: gray80;
+                font-size: @textSizeLocalTitle;
+                text-transform: uppercase;
+            }
+
+            p{
+                color: @gray80;
+                padding-top: @gridRowHeight;
+            }
+        }
+
+    }
+
+    #Pronajimatel {
+
+        .button-icon.fa-refresh{
+            cursor: pointer;
+            position: absolute;
+            left: 180px;
+            color: @gray70;
+            margin-top: -36px;
+
+            &:hover, &:focus{
+                color: @gray50;
+            }
+        }
+    }
+
+    &.modeEdit #Parcely #parcelsSumContainer{
+
+        &:hover a:last-of-type{
+            color: @gray28;
+        }
+
+        a:first-of-type{
+            padding-right: 128px;
+        }
+
+        a:last-of-type{
+            right: 86px;
+        }
+    }
+
+    #Platby{
+
+        select[name="contract-paySubjectOrSum"]{
+            position: absolute;
+            left: 160px;
+            top: -@gridRowHeight;
+
+            .calculateGridColumnSize(4);
+        }
+
+        select[name="contract-payTo"]{
+            .calculateGridColumnSize(4);
+        }
+
+        > .col-4, > .col-6{
+            height: auto;
+            padding-top: 0;
+        }
+
+        > .col-4{
+            float: right;
+        }
+
+        > .col-6{
+
+            label{
+
+                + input{
+                    text-align: right;
+                    padding-right: @lineHeight;
+
+                    + .itemUnit{
+                        position: absolute;
+                    }
+                }
+            }
+
+            .dateType{
+                .calculateGridColumnSize(2);
+            }
+
+            select[name='contract-rentPayCompensation']{
+                .calculateGridColumnSize(6);
+            }
+
+            .contract-rentSumSection{
+                border-top: 1px solid @grayB4;
+                font-size: @textSizeBigger;
+                line-height: @gridRowHeight;
+                height: @gridRowHeight;
+                .calculateGridColumnSize(6);
+                padding-top: 4px;
+                margin-top: 24px;
+
+                > span{
+                    display: inline-block;
+                    float: right;
+                    color: @gray28;
+                    font-size: @textSizeBasic;
+                    font-weight: 600;
+                    text-align: right;
+                    width: 157px;
+                    padding-right: 28px;
+
+                    span{
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+        .component-tabulatedList{
+
+            th, td{
+
+                &:nth-of-type(3){
+                    text-align: right;
+                    width: 144px;
+                    padding-right: @gridRowHeight;
+
+
+                    .secondLine{
+                        text-align: right;
+                    }
+
+                    a{
+                        text-align: right;
+                    }
+                }
+
+                &:last-of-type{
+                    width: 112px;
+                }
+            }
+
+            th:nth-of-type(3){
+                padding-right: 52px;
+            }
+
+            .warningIcon{
+                display: block;
+                float: left;
+                color: @colorRedAlert;
+                line-height: @lineHeight;
+                text-align: left;
+                width: 24px;
+            }
+        }
+    }
+
+    .addParcel, .addAttachment, .addPayment{
+        position: absolute;
+        top: -(@lineHeight + 6px);
+
+        p{
+            line-height: @lineHeightBasic;
+
+            + p{
+                padding-top: 12px;
+            }
+        }
+    }
+
+    .addParcel, .addAttachment, .addAttachmentLink{
+        cursor: pointer;
+        display: block;
+        border-radius: @borderRadius;
+        color: @gray80;
+        text-align: center;
+        line-height: @buttonHeight;
+        height: @buttonHeight;
+        width: @buttonHeight;
+
+        &:hover{
+            background-color: @listItemHoverBackgroundColor;
+            color: @gray28;
+        }
+
+        &:active{
+            background: @listItemActiveBackgroundColor;
+        }
+
+        &::before{
+            position: relative;
+            top: -1px;
+        }
+    }
+
+    .addParcel{
+        left: 120px;
+    }
+
+    .addAttachment{
+        left: 140px;
+        clear: right;
+    }
+    
+    .addAttachmentLink{
+        left: 180px;
+        clear: right;
+        position: absolute;
+        top: -(@lineHeight + 6px);
+        
+        & + .component-toggleAdvanced{
+            position: absolute;
+            top: -(@lineHeight + 4px);
+            left: 220px;
+        }
+    }
+
+    .addPayment{
+        left: 80px;
+        width: auto;
+
+        fieldset{
+            margin-top: @gridRowHeight;
+        }
+
+        .itemUnit{
+            position: absolute;
+            margin: 1px 0 0 -32px;
+        }
+
+        select, textarea#payments-advancedPayment-Kind{
+            width: 232px;
+        }
+
+        select{
+            margin-bottom: 1px;
+        }
+        
+        .entry-label {
+            padding-top: 10px;
+        }
+
+        input[type="text"]{
+            width: 230px;
+            text-align: right;
+            padding-right: 34px;
+        }
+
+        input[type="submit"]{
+            display: block;
+            margin: 8px auto 4px;
+        }
+
+        > a.fa{
+            font-weight: 400;
+
+            &::after{
+                padding-left: 16px;
+            }
+
+            .fa-exclamation-triangle::before{
+                position: absolute;
+                left: 26px;
+                top: 6px;
+                color: @colorRedAlert;
+                font-size: @iconSizeSmall!important;
+            }
+
+            + .component-tooltipContainer .component-tooltip{
+                bottom: 40px;
+                left: -9px;
+
+                ul{
+                    margin-bottom: @gridSmallGap;
+                    padding-top: 8px;
+
+                    li{
+                        padding-left: @gridSmallGap;
+
+                        &::before{
+                            content: "–";
+                            display: inline-block;
+                            padding-right: @gridSmallGap;
+                        }
+                    }
+                }
+
+                p{
+                    padding-top: 0;
+                }
+            }
+
+            &:hover + .component-tooltipContainer .component-tooltip{
+                display: block;
+            }
+        }
+
+        > span.fa{
+            line-height: @lineHeight;
+            height: @lineHeight;
+            width: @buttonHeight + @gridSmallGap;
+
+            &::before{
+                position: relative;
+                left: 10px;
+            }
+
+            &::after{
+                position: absolute;
+                left: 20px;
+                top: 6px;
+                color: @colorRedAlert;
+                font-size: @iconSizeSmall!important;
+            }
+
+            + .component-tooltipContainer .component-tooltip{
+                bottom: 40px;
+                left: -15px;
+            }
+
+            &:hover + .component-tooltipContainer .component-tooltip{
+                display: block;
+            }
+        }
+
+        textarea#payments-advancedPayment-Kind{
+            height: @lineHeight * 2;
+            margin-bottom: 1px;
+        }
+
+    }
+
+    .component-dropdownMenu-popupContent fieldset{
+
+        margin-left: @gridGap;
+
+        legend{
+            text-transform: uppercase;
+        }
+    }
+}
+
+.contractModal{
+    width: 358px;
+    /*height: 380px;*/
+
+    label{
+        display: inline-block;
+        float: left;
+        line-height: 32px;
+    }
+
+    select{
+        height: 32px;
+        line-height: 32px;
+        padding-top: 4px;
+    }
+
+    input{
+        height: 28px;
+        padding: 1px 8px 0px;
+    }
+
+    label[for="contract-state"]{
+        width: 64px;
+    }
+
+    select[name="contract-state"]{
+        width: 184px;
+    }
+
+    select[name="contract-endType"]{
+        width: 150px;
+    }
+
+    input[name="contract-endDate"],input[name="contract-resignDate"]{
+        width: 110px;
+        padding-right: 26px;
+        background-color: transparent;
+        /* pick-aDate si pridava za nas input svoje dalsi prvky cimz odsouva kalendarik */
+        + div.picker + input + div.fa {
+            position: absolute;
+            color: @gray80;
+            margin: 11px 0 0 -22px;
+            z-index: 500000;
+        }
+    }
+
+    .contractEndsTo{
+        clear: both;
+        color: @colorRedAlert;
+        padding-left: 6px;
+    }
+}
+
+.taskView-contracts{
+
+    &.component-dropdownMenu ul ul li label{
+        line-height: 16px;
+        min-width: 200px;
+
+        .secondLine{
+            margin-top: 0px;
+        }
+
+        &::after{
+            top: 13px;
+        }
+    }
+}
+
+.menu-bulkOperations{
+    float: right;
+    line-height: @lineHeightBasic;
+    z-index: 3000;
+
+    > a.button-primary{
+        background: #085C00;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 400;
+        height: 48px;
+        line-height: 48px;
+        border-radius: @borderRadius;
+
+        &:after{
+            color: #fff;
+        }
+
+        &:hover, &:focus{
+            background: #064C00;
+        }
+
+        &:active{
+            background: #054100;
+        }
+    }
+
+    li{
+        min-width: 320px;
+
+        &:hover{
+            background-color: @listItemHoverBackgroundColor;
+        }
+
+        a{
+            padding: @gridSmallGap;
+        }
+    }
+
+    a{
+        display: block;
+        padding: @gridSmallGap @gridSmallGap * 2;
+        text-decoration: none;
+    }
+
+    &.opened, &:hover{
+
+        > a.button-primary{
+            border-radius: 3px 3px 0 0;
+
+            &:after{
+                color: @gray28;
+            }
+        }
+    }
+
+    &.component-dropdownMenu > .component-dropdownMenu-popupContent{
+        top: 48px;
+    }
+}
+.bulkOperations-contextualInformation{
+    color: #fff;
+    float: right;
+    line-height: 48px;
+    margin-right: @gridRowHeight;
+}
+
+.revision-tooltipContent{
+    color: @colorBlack!important;
+
+    strong{
+        font-weight: 600;
+    }
+
+    + div{
+        padding-top: @gridGap;
+    }
+}
+
+.contractList .component-taskFilter > .component-search input[type="text"]{
+    width: 130px;
+}
+
+@media all and (min-width: 1180px){
+    .contractList .component-taskFilter > .component-search input[type="text"]{
+        width: 170px;
+
+        &.filter-input-subject{
+            width: 170px;
+        }
+    }
+}
+
+@media all and (min-width: 12500px){
+    .contractList .component-taskFilter > .component-search input[type="text"].filter-input-subject{
+        width: 300px;
+    }
+}
+
+@media all and (min-width: 1400px){
+    .contractList .component-taskFilter > .component-search input[type="text"].filter-input-subject{
+        width: 374px;
+    }
+}
+

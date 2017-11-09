@@ -1,0 +1,57 @@
+/* 
+   Created on  :  28.4.2015, 13:13:54
+   Author      :  GEe
+   File        :  component-inputDropdown
+*/
+
+.component-inputDropdown{
+
+    &.focused{
+
+        .component-inputDropdown-value, .component-inputDropdown-unit{
+            border-color: @colorBlue;
+        }
+    }
+
+    .component-inputDropdown-value:focus + .component-inputDropdown-unit{
+        border-color: @colorBlue;
+    }
+
+    .component-inputDropdown-value{
+        float: left;
+        border-right: 0!important;
+        border-radius: 2px 0 0 2px;
+        width: 34px!important;
+        text-align: right;
+        padding-right: 4px;
+    }
+
+    input{
+
+        &:focus + select{
+            border-color: @colorBlue!important;
+        }
+
+        + select{
+            font-size: @textSizeBasic;
+            width: 80px!important;
+        }
+
+        &:invalid + select{
+            border-color: @colorRedAlert;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+    }
+
+    &.narrowUnits{
+        
+        .component-inputDropdown-value{
+            width: 93px!important;
+            
+            + select{
+                width: 47px!important;
+            }
+        }
+    }
+}

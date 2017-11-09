@@ -1,0 +1,426 @@
+/* 
+   Created on  :  14.3.2014, 12:09:16
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  mixins
+*/
+
+.button(@radius : @borderRadius, @textDecoration : none){
+    cursor: pointer;
+    display: inline-block;
+    border-radius: @radius;
+    font-family: @textFont;
+    line-height: @buttonHeight;
+    text-decoration: @textDecoration;
+    height: @buttonHeight;
+    padding: 0 @gridGap;
+    white-space: nowrap;
+}
+
+.button-icon(@buttonWidth : @lineHeight, @buttonHeight : @lineHeight, @radius : @borderRadius){
+    cursor: pointer;
+    display: inline-block;
+    border-radius: @radius;
+    color: @gray70;
+    font-family: @iconFont;
+    font-size: @iconSizeBasic;
+    line-height: @buttonHeight;
+    text-align: center;
+    text-decoration: none;
+    height: @buttonHeight;
+    min-width: @buttonWidth;
+    width: @buttonWidth;
+    padding: 0;
+
+    &:hover, &:focus{
+        background-color: @listItemHoverBackgroundColor;
+        color: @gray28!important;
+    }
+
+    &:active{
+        background: @listItemActiveBackgroundColor;
+    }
+}
+
+.svg-mapIcon-set(@colorName){ 
+
+    @colorNameBorder : "mapItem-@{colorName}-border"; 
+    @colorNameBackground : "mapItem-@{colorName}-background"; 
+
+    @a: @@colorNameBorder;
+    @b: @@colorNameBackground;
+
+    .svg-mapIcon.mapIcon-@{colorName}{
+        background-image: url("data:image/svg+xml;utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 20 20' preserveAspectRatio='xMinYMin meet'> <polygon fill='@{b}' stroke='@{a}' points='5.8 0 9.6 0.6 9.6 2.1 12.2 2.1 16.6 3.8 15.1 6.8 18 11.6 17.3 15.4 12.8 15.8 9.6 17.9 4.9 17.1 5 15.6 1.6 15.3 0 12.2 2.4 10.1 0.6 6.9 2.4 6.2 3.4 2.6' /></svg>");
+    } 
+}
+
+.addIcon(@icon, @iconSize: @iconSizeBasic){
+    content: @icon;
+    display: inline-block;
+    border-radius: @borderRadius;
+    font-family: @iconFont;
+    font-size: @iconSize;
+    text-align: center;
+    text-decoration: none;
+}
+
+.stepBack(@leftPosition: -@gridRowHeight, @topPosition: 0){
+    .button-icon(@buttonHeight, @gridRowHeight);
+    position: absolute;
+    left: @leftPosition;
+    top: @topPosition;
+    border-radius: @borderRadius 0 0 @borderRadius;
+    min-width: @buttonHeight;
+}
+
+.disableTextSelection(){
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.backgroundGradient(@from, @to){
+    background: @from;
+    background: -moz-linear-gradient(top, @from 0%, @to 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @from), color-stop(100%, @to));
+    background: -webkit-linear-gradient(top, @from 0%, @to 100%);
+    background: -o-linear-gradient(top, @from 0%, @to 100%);
+    background: -ms-linear-gradient(top, @from 0%, @to 100%);
+    background: linear-gradient(to bottom, @from 0%, @to 100%);
+}
+.backgroundGradientWithImage(@bottom, @top, @imageUrl, @backgroundColor : transparent){
+    background-color: @backgroundColor;
+    background-image: url(@imageUrl);
+    background-image: url(@imageUrl), linear-gradient(to bottom, @top 0%, @bottom 100%);
+    background-image: url(@imageUrl), -moz-linear-gradient(top, @top 0%, @bottom 100%);
+    background-image: url(@imageUrl), -webkit-gradient(linear, left top, left bottom, color-stop(0%, @top), color-stop(100%, @bottom) );
+    background-image: url(@imageUrl), -webkit-linear-gradient(top, @top 0%, @bottom 100);
+    background-image: url(@imageUrl), -o-linear-gradient(top, @top 0%, @bottom 100%);
+    background-image: url(@imageUrl), -ms-linear-gradient(top, @top 0%, @bottom 100%);
+}
+.backgroundCarbon(@backgroundColor: transparent){
+    .backgroundGradientWithImage(rgba(0, 0, 0, .7), rgba(0, 0, 0, .01), '../img/background-carbon.png', @backgroundColor);
+}
+
+.boxDropShadow(@setting : 0 3px 6px 2px, @color : @blackOpacity20){
+    box-shadow: @setting @color;
+    -webkit-box-shadow: @setting @color;
+    -moz-box-shadow: @setting @color;
+}
+
+.setGridColumns(@quantity, @addGap : 0){
+    width: @quantity * @gridBasicDimension + (@quantity - 1 + @addGap) * @gridGap;
+}
+
+.disablePlaceholder(){
+    &::-moz-placeholder{
+        opacity: 0;
+    }
+    &:-moz-placeholder{
+        opacity: 0;
+    }
+    &::-webkit-input-placeholder{
+        opacity: 0;
+    }
+    &:-ms-input-placeholder{
+        opacity: 0;
+    }
+}
+.enablePlaceholder(){
+    &::-moz-placeholder{
+        opacity: .5;
+    }
+    &:-moz-placeholder{
+        opacity: .5;
+    }
+    &::-webkit-input-placeholder{
+        opacity: .5;
+    }
+    &:-ms-input-placeholder{
+        opacity: .5;
+    }
+}
+
+.addHorizontalSeparator(@margin : 0 -@gridGap 0 0, @backgroundColor : @grayEC){
+    content: "";
+    position: relative;
+    top: 1px;
+    display: block;
+    overflow: hidden;
+    background-color: @backgroundColor;
+    height: 1px;
+    margin: @margin;
+}
+.addVerticalSeparator(@height, @paddingLeft, @backgroundColor : @grayE4){
+    content: " ";
+    display: block;
+    float: left;
+    overflow: hidden;
+    background-color: @backgroundColor;
+    height: @height / 2;
+    width: 1px;
+    margin: (@height / 4) 0 0 -(@paddingLeft + 1px);
+}
+.addFakeActiveLineBlock(@blockWidth, @borderColor : @grayEC){
+    .boxSizing(content-box);
+    content: "";
+    display: none;
+    position: absolute;
+    left: 0;
+    top: -1px;
+    border: 1px solid @grayEC;
+    border-left: 0;
+    border-right: 0;
+    height: 100%;
+    width: @blockWidth;
+}
+
+.setMenuStructure(){
+
+    li{
+        display: block!important;
+        position: relative;
+        margin-bottom: 1px;
+        padding: 0 @gridGap;
+
+
+        &:hover{
+            background-color: @grayFA;
+        }        
+
+        &::after, & ul::before{
+            .addHorizontalSeparator();
+        }
+
+        &:last-of-type{
+            margin-bottom: 0;
+
+            &::after{
+                display: none;
+            }
+        }
+
+        ul{
+            background-color: @colorWhite;
+            margin: 1px -@gridGap;
+            padding-left: @gridGap;
+            
+            &::before{
+                top: 0;
+                margin-right: 0;
+            }
+
+            li{
+                padding-left: @gridGap;
+            }
+        }
+    }
+}
+.setMenuWithoutIcons(@blockWidth : @gridGap){
+
+    li{
+        &:hover{
+
+            > label::before, > a::before{
+                display: block;
+            }
+        }
+
+        &:first-of-type{
+
+            > label::before, > a::before{
+                border-top: 0;
+                padding-bottom: 1px;
+            }
+        }
+
+        &:last-of-type{
+
+            > label::before, > a::before{
+                border-bottom: 0;
+            }
+        }
+
+        > label::before, > a::before{
+            .addFakeActiveLineBlock(@blockWidth);
+        }
+    }
+}
+.setMenuWithIcons(@blockWidth : @gridGap * 2){
+
+    li.fa{
+        padding-left: @blockWidth;
+
+        &:first-of-type::before{
+            border-top: none;
+            padding-bottom: 1px;
+        }
+
+        &:last-of-type::before{
+            border-bottom: none;
+        }
+
+        &:hover::before{
+            border-color: @grayEC;
+            color: @gray50;
+        }
+
+        &::before{
+            .boxSizing(content-box);
+            position: absolute;
+            top: -1px;
+            left: 0;
+            border: 1px solid transparent;
+            border-left: none;
+            border-right: none;
+            font-family: @iconFont;
+            font-size: @iconSizeBasic;
+            text-align: center;
+            height: 100%;
+            width: @blockWidth;
+        }
+        
+        a{
+            text-decoration: none;
+        }
+    }
+}
+.setRadioButtonStructure(@blockWidth : @gridGap * 2){
+
+    li{
+        padding-left: @blockWidth;
+
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            left: 14px;
+            top: 11px;
+            background-color: @colorWhite;
+            border: 1px solid @colorBlue;
+            border-radius: 7px;
+            font-size: @iconSizeBasic;
+            height: 12px;
+            width: 12px;
+        }
+
+        &.selected::before{
+            background-color: @colorBlue;
+            box-shadow: inset 0 0 0 2px @colorWhite;
+            -moz-box-shadow: inset 0 0 0 2px @colorWhite;
+            -webkit-box-shadow: inset 0 0 0 2px @colorWhite;
+        }
+
+        label{
+            line-height: @lineHeight;
+            white-space: nowrap;
+        }
+    }
+}
+
+.listWithIconsAndLineDividers(@lineHeight : 35px, @iconSize : 14px , @iconIndent : @gridGap){
+
+    li{
+        min-width: 125px;
+
+        &:hover{
+            background-color: @grayFA;
+            cursor: pointer;
+
+            .fa::before{
+                .boxSizing(content-box);
+                border: 1px solid @grayEC;
+                border-left: 0;
+                border-right: 0;
+            }
+        }
+
+        &:first-of-type .fa::before{
+            border-top: none;
+            margin-bottom: -1px;
+        }
+
+        &:last-of-type .fa::before{
+            border-bottom: none;
+            margin-top: -1px;
+        }
+
+        &:hover::before{
+            border-color: @grayEC;
+            color: @gray50;
+        }
+
+        & + li::before{
+            .addHorizontalSeparator(0 0 0 (@iconIndent * 2 + 5) );
+        }
+    }
+
+    .fa{
+        font-family: @textFont;
+        line-height: @lineHeight;
+
+        &::before{
+            color: @gray50!important;
+            font-family: @iconFont;
+            font-size: @iconSize;
+            display: inline-block;
+            width: 45px;
+            text-align: center;
+        }
+    }
+}
+
+.setAppBackground(){
+    background: #FEFEFE url('../img/background-app.png') left top repeat;
+}
+
+.boxSizing(@type: border-box){
+    box-sizing: @type;
+    -webkit-box-sizing: @type;
+    -moz-box-sizing: @type;
+    -o-box-sizing: @type;
+}
+
+.calculateGridColumnSize(@numberOfColumns, @attribute : width){
+    @{attribute}: (@gridBasicDimension + @gridGap) * @numberOfColumns - @gridGap;
+}
+.calculateGridBlockHeight(@numberOfColumns){
+    height: (@gridBasicDimension + @gridGap) * @numberOfColumns - @gridGap;
+}
+.calculateGridBlockLeftDistance(@numberOfColumns){
+    margin-left: (@gridBasicDimension + @gridGap) * @numberOfColumns + @gridGap!important;
+}
+.calculateGridBlockRightDistance(@numberOfColumns){
+    margin-right: (@gridBasicDimension + @gridGap) * @numberOfColumns + @gridGap!important;
+}
+.calculateGridBlockTopDistance(@numberOfRows){
+    margin-top: @lineHeight * @numberOfRows;
+}
+.calculateGridBlockDimensions(@numberOfBlock){
+    .calculateGridBlockHeight(@numberOfBlock * 2);
+    .calculateGridColumnSize(@numberOfBlock * 2);
+}
+
+.animation(@animation){
+    animation: @animation;
+    -webkit-animation: @animation;
+    -moz-animation: @animation;
+    -o-animation: @animation;
+}
+
+.transform(@transform){
+    transform: @transform;
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -o-transform: @transform;
+}
+
+.transition(@property, @time, @how, @delay : 0s){
+    -webkit-transition: @property @time @how @delay;
+    -moz-transition: @property @time @how @delay;
+    -o-transition: @property @time @how @delay;
+    transition: @property @time @how @delay;
+}

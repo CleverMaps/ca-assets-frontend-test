@@ -1,0 +1,42 @@
+/* 
+   Created on  :  5.11.2014, 1:01:31
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-menuListWithIcons
+*/
+
+.component-menuListWithIcons{
+    display: block;
+    min-width: 232px;
+    line-height: @lineHeight;
+    
+    .setMenuStructure();
+    .setMenuWithIcons();
+
+	li.firstRowTitle{
+    	border: none;
+    	color: @gray80;
+    	font-size: @textSizeSmall;
+    	line-height: @lineHeightBasic;
+    	padding-bottom: 0;
+    	padding-left: 20px * 2;
+    	padding-top: @gridSmallGap;
+
+    	&:hover{
+    		background: none;
+    		color: @gray80;
+    		cursor: default;
+    	}
+    }
+
+    &.radiowithIconEye{
+    	li{
+    		&::before{
+    			content: '';
+    		}
+
+    		&.selected.fa-eye::before{
+    			content: '\f06e';
+    		}
+    	}
+    }
+}

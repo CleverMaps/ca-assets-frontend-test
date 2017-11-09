@@ -1,0 +1,136 @@
+/* 
+   Created on  :  12.3.2014, 18:52:55
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  component-mainMenu
+*/
+
+.component-appMenu{
+    position: relative;
+    display: block;
+    width: 52px;
+    height: 48px;
+    float: left;
+    z-index: 1004;
+
+    &.allingToLeft{
+        left: 0;
+    }
+
+    &.allingToRight{
+        right: 4px;
+        width: auto;
+
+        div{
+            left: auto;
+            right: 0;
+            border-left: 1px solid @gray70;
+            text-align: left;
+            min-width: 144px;
+            width: auto;
+            padding: 0 28px 0 @gridGap;
+        }
+    }
+
+    ul{
+        .backgroundCarbon(@colorBlack);
+        .boxDropShadow(1px 2px 6px 0px, rgba(50, 50, 50, 0.4));
+        border-radius: 0 0 3px 3px;
+        border-top: 1px solid #084D02;
+        display: none;
+        font-size: @textSizeBasic;
+        min-width: 240px;
+        padding: @gridGap 0 12px 0;
+        position: absolute;
+        top: 48px;
+
+        li{
+            cursor: pointer;
+
+            &:hover{
+                background-color: @blackOpacity20;
+
+                a{
+                    border-left-color: @CleverMapsColor;
+
+                    &.fa:before{
+                        color: @CleverMapsColor;
+                    }
+                }
+            }
+
+            a{
+
+                &:link, &:visited{
+                    color: @grayEC;
+                }
+
+                display: block!important;
+                border-left: 4px solid transparent;
+                color: @grayEC;
+                padding: 0 64px 0 24px;
+
+                &.fa:before{
+                    display: block;
+                    position: absolute;
+                    right: 20px;
+                    text-align: center;                    
+                    width: 20px;
+                    margin-top: 13px;
+                }
+
+                span{
+                    display: block;
+                    font-weight: 400;
+                    padding: 13px 0;
+                }
+            }
+        }
+    }
+
+    &:hover{
+
+        div{
+            background: @colorGreenPressed;
+            border-bottom-color: #084D02;
+        }
+
+        ul{
+            display: block;
+        }
+    }
+
+    div{
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-bottom: 3px solid transparent;
+        color: #fff;
+        font-family: @textFont;
+        line-height: 48px;
+        text-align: center;
+        height: 48px;
+        width: 52px;
+        white-space: nowrap;
+
+        &.fa::after, &.fa::before{
+            font-family: @iconFont;
+        }
+
+        &.fa-caret-down-after::after{
+            position: absolute;
+            right: 12px;
+            font-size: @iconSizeTitle;
+            margin-top: 6px;
+
+            transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg); 
+        }
+
+        &.fa-bars::before{
+            font-size: @iconSizeBasic + 4px;
+        }
+    }
+}

@@ -1,0 +1,160 @@
+/* 
+   Created on  :  Jul 10, 2014, 8:47:59 AM
+   Author      :  GEe <email@jiri-rusnak.com>
+   file        :  task-subjects
+*/
+.component-tabulatedList.subjects{
+
+    td{
+        line-height: @textSizeBasic;
+
+        &:first-of-type div{
+            color: @colorRedAlert;
+        }
+
+        span{
+            color: @gray70;
+            font-size: @textSizeSmall;
+
+            span{
+                color: @gray50;
+            }
+        }
+    }
+
+    th:last-of-type{
+        padding-left: 16px;
+    }
+
+    td:last-of-type{
+        min-width: 200px;
+        padding-left: 16px;
+    }
+
+    th:nth-of-type(2) a, th:nth-of-type(3) a, th:nth-of-type(4) a{
+        padding-left: 10px;
+    }
+
+    td:nth-of-type(2), td:nth-of-type(3){
+        min-width: 320px;
+    }
+}
+
+#component-itemDetail.subjectDetail{
+
+    .clearForm {
+        position: absolute;
+        left: 485px;
+        top: -@gridRowHeight;
+        margin-left: 0;
+    }
+
+    fieldset.notes{
+        position: absolute;
+        top: 216px;
+        right: 0;
+
+        legend{
+            top: -@gridGap;
+        }
+    }
+
+    .fa-check{
+        display: inline-block;
+        font-size: @textSizeSmall;
+        margin-left: 2 * @gridBasicDimension;
+
+        &::before{
+            position: relative;
+            left: -4px;
+            top: 1px;
+        }
+    }
+
+    .subject-registerData{
+
+        .colorGray28{
+            font-weight: 600;
+        }
+
+        &:hover .component-tooltip{
+            display: block;
+        }
+
+        .subject-newData{
+            padding: @gridGap 0 0 (2 * @gridGap);
+
+            > a, > input{
+                float: left;
+            }
+
+            > a{
+                margin-left: @gridGap;
+            }
+        }
+
+        .component-tooltip{
+            left: -360px;
+            top: -44px;
+        }
+
+    }
+
+    .subject-paymentData{
+        position: relative;
+
+        .component-dropdownMenu{
+            position: absolute;
+            top: -40px;
+            right: 0;
+
+            ul.listOfRadiobuttons{
+                width: 200px;
+
+                li{
+                    line-height: @lineHeight;
+                    white-space: nowrap;
+                    
+                    a{
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .subject-usedValues{
+        position: relative;
+        padding-top: @gridRowHeight * 2;
+        padding-bottom: 2 * @gridGap;
+        
+        h2{
+            padding-top: 0;
+            height: @lineHeight;
+            line-height: @lineHeight;
+        }
+        
+        fieldset{
+            margin-top: @gridRowHeight + @gridGap;
+            
+            legend{
+                font-size: @textSizeBigger;
+            }
+        }
+    }
+
+    .entry-value.address{
+        line-height: normal;
+        height: auto;
+        padding-top: 6px;
+    }
+
+    input[name="subject-checkAddress"]{
+        display: inline-block;
+        margin: 2 * @gridGap 0 0 @gridBasicDimension;
+    }
+
+    textarea[name="subject-notes"]{
+        height: 156px;
+    }
+}
