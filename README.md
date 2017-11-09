@@ -1,8 +1,8 @@
 # Zadání
 
 Cílem je upravit zadanou statickou HTML/CSS šablonu [task-subject-detail.html](statics/task-subject-detail.html) do stavu, který
-co nejvíce odpovídá grafickému zadání [subject-detail.png](subject-detail.png). Při práci doporučuji použít existující CSS styly
-v souborech v adresáři less (výchozí soubor je [all-in-one.less](less/all-in-one.less) a využít existující strukturu v zadaném statiku.
+co nejvíce odpovídá grafickému zadání [subject-detail.png](subject-detail.png). Při práci doporučuji použít CSS styly
+v souborech v adresáři less (výchozí soubor je [all-in-one.less](less/all-in-one.less) a vycházet z kódu zadaném statiku.
 
 Výsledkem práce může být nový soubor se statickou šablonou nebo upravený existující soubor, který je nutné mergovat/commitovat do větve 
 master v tomto repozitáři (nebo vytvořit pull request z pracovní větve).
